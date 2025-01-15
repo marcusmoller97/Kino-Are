@@ -10,37 +10,44 @@
          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
    </head>
    <body id="moviesPageBody">
-      <header class="header">
-         <div class="logo-navbar">
-            <div class="logo">
-               <img class="kino-logo" src="Pictures/kino-logo.png" />
-            </div>
-            <div class="nav-title-container">
-               <h1>KINO</h1>
-               <h2>FILM SOM ROAR</h2>
-               <h2>OCH EVEN OROAR</h2>
-               <div class="navbar-container">
-                  <a href="#">New events</a>
-                  <a href="#">New movies</a>
-                  <a href="#">The story</a>
-                  <a href="#">Contact us</a>
-               </div>
-            </div>
-         </div>
-      </header>
-      <main class="main">
-         <section class="upperSection">
-            <div class="searchSection">
-               <input class="searchBar" type="search" />
+      <header>
+         <img
+            class="kinoLogo"
+            src="Pictures/logoHead.png"
+            alt="logotyp för Kino" usemap="#logoMap"/>
+            <map name="logoMap">
+              <area shape="rect" coords="225,10,573,143" href="index.html" alt="Kino">
+            </map>
+         <div class="navContainer">
+            <nav class="headerNav">
+               <a href="moviesPage.html" class="headerNavItem">
+                  See all movies</a
+               >
+               <a href="#" class="headerNavItem">Link</a>
+               <a href="#" class="headerNavItem">Link</a>
+               <a href="#" class="headerNavItem">Link</a>
+               <a href="#" class="headerNavItem">Link</a>
+               <a href="#" class="headerNavItem">Link</a>
+               <a href="#" class="headerNavItem">Link</a>
+               <a href="#" class="headerNavItem">Link</a>
+            </nav>
+            <div class="searchBar">
+               <input
+                  type="search"
+                  placeholder="Search..."
+                  class="searchInput" />
                <button class="searchBtn">Search</button>
             </div>
-            <img class="seatImg" src="Pictures/seat.jpg" />
-            <img class="kinoImg" src="Pictures/logoHead.png" />
-         </section>
-         <section class="avatarSection">
-            <img class="highlightsImgs" src="Pictures/avatarBackground.jpg" />
-            <img class="avatarImg" src="Pictures/avatarpng.png" />
-         </section>
+         </div>
+         <figure class="cinemaSeats">
+               <img
+                  class="picUnderNav"
+                  src="Pictures/seats.png"
+                  alt="Image under the navbar not fount!" />
+         </figure>
+         
+      </header>
+      <main class="main">
          <section class="scrollingSections">
             <h1>Movie production companies we work with</h1>
             <ul class="picsListUp">
@@ -264,28 +271,18 @@
          </section>
       </main>
       <hr class="moviesLine">
-      <footer class="footer">
-         <form class="containerLeft">
-            <h1>ABOUT US</h1>
-            <p>About Kino south</p>
-            <p>Contact us</p>
-            <p>Work with us</p>
-            <p>Question & answers</p>
-         </form>
-         <form class="containerMid">
-            <h1>CINEMA EXPERIENC</h1>
-            <p>Give cards</p>
-            <p>Kids cinema</p>
-            <p>4DX</p>
-            <p>Upcoming events</p>
-         </form>
-         <form class="containerRight">
-            <h1>SOCIAL MEDIA</h1>
-            <p>Fecebook</p>
-            <p>Instagram</p>
-            <p>youtube</p>
-            <p></p>
-         </form>
+       <footer>
+         <nav>
+            <a href="#" class="footerNav footerAboutUsLink">Om oss</a>
+            <a href="#" class="footerNav footerAllMoviesLink">Alla filmer</a>
+            <a href="#" class="footerNav footerInstagramLink">Instagram</a>
+            <a href="#" class="footerNav footerFacebookLink">Facebook</a>
+            <a href="#" class="footerNav footerXLink">X</a>
+            <a href="#" class="footerNav footerTosLink">ToS</a>
+            <a href="#" class="footerNav footerPrivacyPolicyLink"
+               >Privacy policy</a
+            >
+         </nav>
       </footer>
       <script src="moviesPage.js"></script>
    </body>
