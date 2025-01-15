@@ -815,7 +815,6 @@ template {
 
 header {
   background-color: #0e0e1b;
-  padding: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -828,6 +827,7 @@ header .kinoLogo {
 header .navContainer {
   display: flex;
   align-items: center;
+  padding: 1rem;
   justify-content: space-between;
   width: 95%;
   gap: 1rem;
@@ -863,6 +863,14 @@ header .searchBar .searchBtn {
   font-size: 1rem;
   cursor: pointer;
 }
+header .cinemaSeats {
+  width: 100%;
+}
+header .cinemaSeats .picUnderNav {
+  object-fit: cover;
+  width: 100%;
+  height: 400px;
+}
 
 * {
   margin: 0px;
@@ -872,7 +880,6 @@ header .searchBar .searchBtn {
 
 .skiReviewerSection {
   background-color: #0e0e1b;
-  width: 100vw;
   display: flex;
   padding-top: 30px;
   gap: 1rem;
@@ -890,18 +897,19 @@ header .searchBar .searchBtn {
   top: 0px;
   width: 100%;
   height: 100%;
-
+  overflow: auto;
 }
 
 .allMoviesBtn {
-  position: absolute;
-  left: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
   border: none;
   background-color: #175dcc;
   color: white;
+  margin-top: 2rem;
   font-size: 1.5rem;
-  padding: 0.5rem;
-  overflow: auto;
+  padding: 1rem;
 }
 
 .exitBtn {
