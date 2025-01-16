@@ -13,7 +13,7 @@ const movieCard = {
      * @param {*} addMovieCardTo Which element the moviecard should be appended to.
      */
 
-    createMovieCard(movieId, url, title, addMovieCardTo) {
+    createMovieCard (movieId, url, title, addMovieCardTo) {
         // create wrapper to contain moviecard
         const movieWrapper = document.createElement('article');
         movieWrapper.id = movieId;
@@ -62,7 +62,7 @@ const movieCard = {
      * @param {*} array Information to load data from.
      */
 
-    createMovieCardsFromArray(array, appendMovieCardTo) {
+    createMovieCardsFromArray (array, appendMovieCardTo) {
         array.forEach(element => {
             this.createMovieCard(element.id, element.image, element.title, appendMovieCardTo);
         });
@@ -73,7 +73,7 @@ const movieCard = {
      * Function to create clickevent to open movieModal
      * @param {*} movieArray Array to find all the information that matches the id from. 
      */
-    clickEventMovieModal(movieArray) {
+    clickEventMovieModal (movieArray) {
         const section = document.querySelectorAll('article.movieWrapper');
 
         section.forEach(movieCard => {
@@ -90,7 +90,7 @@ const movieCard = {
     /**
      * Function to create a movie modal.
      */
-    createMovieModal() {
+    createMovieModal () {
         // Create movie modal container
         const movieModal = document.createElement('section');
         movieModal.classList.add('movieModalWrapper');
@@ -115,7 +115,7 @@ const movieCard = {
     /**
      * Function to exit the movie modal by removing it from the DOM.
      */
-    exitMovieModal(movieModal) {
+    exitMovieModal (movieModal) {
         // Remove the movie modal from the DOM
         movieModal.remove();
     },
@@ -124,7 +124,7 @@ const movieCard = {
      * @param {*} idValue To get info from specific movie.
      * @param {*} searchArray The array which to filter from when getting the information.
      */
-    getInfoToMovieModal(idValue, searchArray) {
+    getInfoToMovieModal (idValue, searchArray) {
         // sort array with correct info about specific movie into array
         const modalMovie = searchArray.filter((movie) => movie.id == idValue);
 
@@ -136,7 +136,7 @@ const movieCard = {
      * Function to append information to modal box with.
      * @param {*} infoArray Array to read information from.
      */
-    appendInfoMovieModal(infoArray) {
+    appendInfoMovieModal (infoArray) {
         // movie content
         const movieContent = document.createElement('article');
         movieContent.classList.add('movieContent');
@@ -336,7 +336,7 @@ const movieCard = {
      * @param {*} minuteStr Takes argument in the format of (xxx min)
      * @returns {*} String in the form of "hours timme minutes minuter".
      */
-    minutesToHoursConverter(minuteStr) {
+    minutesToHoursConverter (minuteStr) {
         // Extract minutes from string
         const minutes = parseInt(minuteStr.split(' ')[0], 10);
 

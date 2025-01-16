@@ -1,0 +1,59 @@
+main.main
+  section.scrollingSections
+    h1 Movie production companies we work with
+    ul.picsListUp
+      img.pic.picx1(src="Pictures/universal.png", alt="Image not found")
+      img.pic.picx2(src="Pictures/warner.png", alt="Image not found")
+      img.pic.picx3(src="Pictures/paramount.png", alt="Image not found")
+      img.pic.picx4(src="Pictures/prime.png", alt="Image not found")
+      img.pic.picx5(src="Pictures/disney.png", alt="Image not found")
+      img.pic.picx6(src="Pictures/dreamworks.png", alt="Image not found")
+      img.pic.picx7(src="Pictures/pixar.png", alt="Image not found")
+      img.pic.picx8(src="Pictures/hbo.png", alt="Image not found")
+    ul.picsListDown
+      img.pics.pic1(src="Pictures/dreamworks.png", alt="Image not found")
+      img.pics.pic2(src="Pictures/netflix.png", alt="Image not found")
+      img.pics.pic3(src="Pictures/marvel.png", alt="Image not found")
+      img.pics.pic4(src="Pictures/lucas.png", alt="Image not found")
+      img.pics.pic5(src="Pictures/disney.png", alt="Image not found")
+      img.pics.pic6(src="Pictures/newcinema.png", alt="Image not found")
+      img.pics.pic7(src="Pictures/pixar.png", alt="Image not found")
+      img.pics.pic8(src="Pictures/hbo.png", alt="Image not found")
+
+  section.filterSection
+    button.filterBtn.fa-solid.fa-xmark.fa-2xl
+    .filterMenu
+      p Filter by genres
+      .tagsContainer
+        button.tags.drama Drama
+        button.tags.adventure Adventure
+        button.tags.crime Crime
+        button.tags.action Action
+        button.tags.Comedy Comedy
+        button.tags.sci Sci-Fi
+        button.tags.fantacy Fantacy
+        button.tags.kids Kids
+      hr.line
+      p Filter by released year
+      section.filterByInputSection
+        form.containerLeft
+          input.input.releaseYfrom(type="number", min="1900", max="2025", placeholder="Release year from")
+          p To
+          input.input.releaseYto(type="number", min="1900", max="2025", placeholder="Release year to")
+        form.containerRight
+          input.input.ratingFrom(type="number", step="0.1", min="1", max="10", placeholder="Rating from")
+          p To
+          input.input.ratingTo(type="number", step="0.1", min="1", max="10", placeholder="Rating to")
+      hr.line
+      button.submitBtn Submit Filter
+
+  section.moviesSection
+    hr.moviesLine
+    .cardContainer
+      each movie, index in [1,2,3,4,5,6,7,8]
+        .movieCard
+          img.moviesImg(src=`Pictures/${movie}.jpeg`, alt="movie image not found")
+          .cardInfo
+            h2.moviesName Movies name
+            p.moviesDes Movies description should be placed here
+            button.buyBtn Buy ticket

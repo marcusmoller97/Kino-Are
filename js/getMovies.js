@@ -5,7 +5,7 @@ const movies = {
     //Function that adds all movies to an array
     async getAllMovies() {
         
-        fetch("content/movies.json")
+        fetch("/content/movies.json")
         .then(response => {
             return response.json();
         })
@@ -22,7 +22,7 @@ const movies = {
     //Function that adds released movies to an array
     async getReleasedMovies() {
 
-        fetch("content/movies.json")
+        fetch("./content/movies.json")
         .then(response => {
             return response.json();
         })
@@ -40,7 +40,7 @@ const movies = {
     //Function that adds upcoming movies to an array
     async getUpcomingMovies() {
 
-        fetch("content/movies.json")
+        fetch("./content/movies.json")
         .then(response => {
             return response.json();
         })
