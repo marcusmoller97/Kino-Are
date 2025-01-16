@@ -3,7 +3,9 @@ html
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    title #{pageTitle}
+    title 
+      each val in menuItems
+        #{val.label}
     meta(name="viewport" content="width=device-width, initial-scale=1")
     link(rel="stylesheet", type="text/css", media="screen", href="static/main.css")
     script(type="module", src="js/main.js", defer)
@@ -16,9 +18,8 @@ html
         area(shape="rect", coords="225,10,573,143", href="index.html", alt="Kino")
       .navContainer
         nav.headerNav
-          a.headerNavItem(href="moviesPage.html") Movies
-          a.headerNavItem(href="#") Link
-          a.headerNavItem(href="#") Link
+          each ele in menuItems
+            a.headerNavItem(href=ele.link) #{ele.label}
         .searchBar
           input.searchInput(type="search", placeholder="Search...")
           button.searchBtn Search

@@ -1,4 +1,5 @@
 import express from 'express';
+import renderPage from './lib/renderPage.js';
 
 const app = express();
 const PORT = 5080;
@@ -7,23 +8,15 @@ app.set('view engine', 'pug');
 app.set('views', 'views');
 
 app.get('/', (req, res) => {
-
-    const payload = {
-        pageTitle: 'Kino home'
-    };
-
-    res.status(200).render('home', payload);
+    renderPage(res, 'home')
 });
 
 app.get('/index.html', (req, res) => {
-    res.status(200).render('home');
+    renderPage(res, 'home');
 });
 
 app.get('/moviesPage.html', (req, res) => {
-    const payload = {
-        pageTitle: 'Kino movies'
-    };
-    res.status(200).render('movies', payload);
+    renderPage(res, 'movies')
 });
 
 app.use('/pictures', express.static('./pictures'));

@@ -9,7 +9,8 @@
     "sass:watch": "sass --watch src/sections/main.scss ./static/main.css",
     "test:jest": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "dev": "npx pm2-dev server.js",
-    "start": "npx pm2 start server.js"
+    "start": "npx pm2 start server.js",
+    "stop": "npx pm2 stop server"
   },
   "author": "",
   "license": "ISC",
