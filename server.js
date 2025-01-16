@@ -20,7 +20,10 @@ app.get('/index.html', (req, res) => {
 });
 
 app.get('/moviesPage.html', (req, res) => {
-    res.status(200).render('movies');
+    const payload = {
+        pageTitle: 'Kino movies'
+    };
+    res.status(200).render('movies', payload);
 });
 
 app.use('/pictures', express.static('./pictures'));
