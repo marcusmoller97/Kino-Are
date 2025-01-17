@@ -21,6 +21,7 @@ app.get('/moviesPage.html', (req, res) => {
 
 app.use('/pictures', express.static('./pictures'));
 app.use('/static', express.static('./static'));
+app.use('/content', express.static('./content'));
 app.use('/js', express.static('./js'));
 
 
