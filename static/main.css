@@ -396,6 +396,7 @@
   overflow: hidden;
   height: 100%;
   width: 100%;
+  text-decoration: none;
 }
 .moviesSection .cardContainer .movieCard:hover {
   box-shadow: #ffb509 0px 0px 9px 4px;
@@ -910,6 +911,21 @@ header .cinemaSeats .picUnderNav {
   margin-top: 2rem;
   font-size: 1.5rem;
   padding: 1rem;
+}
+
+.backAllMovies {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border: none;
+  background-color: #175dcc;
+  color: white;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+  padding: 1rem;
+  width: 200px;
+  min-height: 30px;
+  text-decoration: none;
 }
 
 .exitBtn {

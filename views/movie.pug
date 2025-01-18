@@ -1,0 +1,9 @@
+extends layout/main-layout.pug
+block content
+    a.backAllMovies(href='/movies') Show all movies
+    if movies.attributes.image
+        - console.log(movies.attributes.intro, movies.attributes.title)
+        img.moviesImg(src=movies.attributes.image.url, alt="")
+        .cardInfo
+            h2.moviesName #{movies.attributes.title}
+            .moviesDes!= movies.attributes.intro

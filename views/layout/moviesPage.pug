@@ -51,7 +51,7 @@ main.main
     hr.moviesLine
     .cardContainer
       each movie in movies
-        .movieCard
+        a.movieCard(href=`/movies/${movie.id}`)
           if movie.attributes.image
             img.moviesImg(src=movie.attributes.image.url, alt="")
           .cardInfo
