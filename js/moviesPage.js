@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Codeblock for search bar
-    const searchSection = document.querySelector(".searchSection");
+   /*  const searchSection = document.querySelector(".searchSection");
     const initialTop = searchSection.offsetTop;
 
     window.addEventListener("scroll", () => {
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             searchSection.style.top = "45%";
             searchSection.style.minWidth = "40vw";
         }
-    });
+    }); */
 
     // Log the scroll value
     window.addEventListener("scroll", () => {

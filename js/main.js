@@ -26,7 +26,7 @@ findTopThreeMovies();
 /* showAllMovies(); */
 
 document.querySelector(".allMoviesBtn").addEventListener("click", function () {
-    window.location.href = "moviesPage.html";
+    window.location.href = "movies";
 });
 
 

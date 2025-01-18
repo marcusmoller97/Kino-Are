@@ -1,5 +1,6 @@
 import express from 'express';
 import renderPage from './lib/renderPage.js';
+import { loadMovies } from './src/apiMovies.js';
 
 const app = express();
 const PORT = 5080;
@@ -11,12 +12,14 @@ app.get('/', (req, res) => {
     renderPage(res, 'home')
 });
 
-app.get('/index.html', (req, res) => {
+app.get('/home', (req, res) => {
     renderPage(res, 'home');
 });
 
-app.get('/moviesPage.html', (req, res) => {
+app.get('/movies', async (req, res) => {
+    
     renderPage(res, 'movies')
+    /* res.render('movies') */
 });
 
 app.use('/pictures', express.static('./pictures'));

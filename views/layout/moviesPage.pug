@@ -50,10 +50,13 @@ main.main
   section.moviesSection
     hr.moviesLine
     .cardContainer
-      each movie, index in [1,2,3,4,5,6,7,8]
+      each movie in movies
         .movieCard
-          img.moviesImg(src=`Pictures/${movie}.jpeg`, alt="movie image not found")
+          if movie.attributes.image
+            img.moviesImg(src=movie.attributes.image.url, alt="")
           .cardInfo
-            h2.moviesName Movies name
-            p.moviesDes Movies description should be placed here
-            button.buyBtn Buy ticket
+            h2.moviesName #{movie.attributes.title}
+            //p.moviesDes #{movie.attributes.intro}
+            button.movieBtn 
+              span.movieSpanBtn Köp biljett 
+              i.fa-solid.fa-money-bill-wave 

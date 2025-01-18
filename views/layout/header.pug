@@ -3,21 +3,21 @@ html
   head
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge")
-    title
+    each item in menuItems
+      if item.active 
+        title #{item.label}
+        break
     meta(name="viewport" content="width=device-width, initial-scale=1")
     link(rel="stylesheet", type="text/css", media="screen", href="static/main.css")
     if menuItems[0].active 
       script(type="module", src="js/main.js", defer)
-      script(src="https://kit.fontawesome.com/8357c99e29.js", crossorigin="anonymous")
-      <!-- The script above needs to be added on every single HTML file that contains movie cards -->
-    else if menuItems[1].active
-      - console.log(menuItems[1], "hej")
-      script(type="module", src="./js/moviesPage.js", defer)
+    script(src="https://kit.fontawesome.com/8357c99e29.js", crossorigin="anonymous")
+    <!-- The script above needs to be added on every single HTML file that contains movie cards -->
   body
     header
       img.kinoLogo(src="Pictures/logoHead.png", alt="logotyp för Kino", usemap="#logoMap")
       map(name="logoMap")
-        area(shape="rect", coords="225,10,573,143", href="index.html", alt="Kino")
+        area(shape="rect", coords="225,10,573,143", href="home", alt="Kino")
       .navContainer
         nav.headerNav
           each ele in menuItems
