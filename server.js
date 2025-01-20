@@ -43,7 +43,6 @@ app.listen(PORT, () => {
     console.log(`Server is running on: http://localhost:${PORT}/`);
 });
 
-//TODO: Filmernas intro-text ska renderas med hjälp av “markdown” för formatering Maybe done!
 //TODO: När användare besöker en filmsida som inte existerar ska en felsida visas och servern svara med korrekt HTTP-status, TODO: ett integrationstest bekräftar att detta fungerar
 //TODO: Det ska finnas ett integrationstest som verifierar att filmsidor visar rätt titel
 //TODO: 
