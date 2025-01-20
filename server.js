@@ -23,13 +23,18 @@ app
         renderPage(res, 'movie', req.params.id);
     });
 
-app
+    
+    app
     .use('/static', express.static('./static'))
     .use('/pictures', express.static('./pictures'))
     .use('/content', express.static('./content'))
     .use('/js', express.static('./js'))
-
-app.all('*', (_req, res) => res.status(404).render("404"))
+    
+app.all('*', (_req, res) => {
+    res.status(404);
+    const status = res.statusCode
+    res.render("404", { status })
+})
 
 app.use(errorHandler)
 

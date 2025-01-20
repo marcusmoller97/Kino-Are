@@ -1285,4 +1285,23 @@ article.movie .cardInfo h2, article.movie .cardInfo p {
   padding-top: 0.5rem;
 }
 
+/* error pages */
+.errorBody {
+  background-color: #0e0e1b;
+  margin-top: 10rem;
+}
+.errorBody h1 {
+  text-align: center;
+}
+.errorBody .backTo {
+  font-size: 1.5rem;
+  text-align: center;
+  cursor: pointer;
+  width: 200px;
+  min-height: 30px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /*# sourceMappingURL=main.css.map */

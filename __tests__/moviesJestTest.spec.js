@@ -1,6 +1,6 @@
 import '@testing-library/jest-dom';
 import jest from 'jest-mock';
-import { movieCard } from "../movies.js";
+import { movieCard } from "../js/movies.js";
 
 // test for minutesHoursConverter()
 describe("Converting minutes string to string in 'h timme m minuter'", () => {

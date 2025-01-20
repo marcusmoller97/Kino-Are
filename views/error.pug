@@ -1,1 +1,9 @@
-h1 Something went wrong, please try again!
+doctype html
+html
+  head
+    title Something went wrong!
+    link(rel="stylesheet", href="/static/main.css")
+  body.errorBody
+    h1 StatusCode: #{status}
+    h1 Something went wrong, please try again!  
+    a.backTo(href='/movies') Go back!

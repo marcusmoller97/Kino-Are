@@ -1,3 +1,4 @@
+@use 'sass:math';
 @use "moviesPage.scss" as *;
 $backgroundColor: #0e0e1b;
 $buttonColor: #175dcc;
@@ -559,5 +560,26 @@ article.movie {
       h2, p {
          padding-top: 0.5rem;
       }
+   }
+}
+
+/* error pages */
+.errorBody {
+   background-color: $backgroundColor;
+   margin-top: 10rem;
+   h1 {
+      text-align: center;
+   }
+   .backTo {
+      font-size: 1.5rem;
+      text-align: center;
+      cursor: pointer;
+
+      width: 200px;
+      min-height: 30px;
+
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
    }
 }

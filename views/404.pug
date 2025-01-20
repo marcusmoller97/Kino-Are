@@ -1,1 +1,9 @@
-h1 Page not found!
+doctype html
+html
+  head
+    title Page not found!
+    link(rel="stylesheet", href="/static/main.css")
+  body.errorBody
+    h1 Page not found!
+    h1 Status: #{status}
+    a.backTo(href='/') Go back!
