@@ -3,7 +3,6 @@ block content
     a.backAllMovies(href='/movies') Show all movies
     article.movie
         if movie.attributes.image
-            - console.log(movie.attributes.intro, movie.attributes.title)
             img.moviesImg(src=movie.attributes.image.url, alt="")
             .cardInfo
                 h2.moviesName #{movie.attributes.title}

@@ -1,4 +1,5 @@
 import initApp from './src/app.js';
+import fetch from 'node-fetch';
 
 const app = initApp();
 const PORT = 5080;

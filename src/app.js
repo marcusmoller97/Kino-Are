@@ -20,7 +20,6 @@ function initApp () {
             renderMoviesPage(res, 'movies');
         })
         .get('/movies/:id', async (req, res) => {
-            console.log(req.params.id);
             renderMoviePage(res, 'movie', req.params.id);
         });
 

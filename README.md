@@ -1,3 +1,3 @@
-# Kino---Cinema update
+# Kino-Are
 
-test again
+* To run moviesJestTest.spec.js change **testEnvironment** to __jsdom__
