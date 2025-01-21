@@ -2,9 +2,9 @@ extends layout/main-layout.pug
 block content
     a.backAllMovies(href='/movies') Show all movies
     article.movie
-        if movies.attributes.image
-            - console.log(movies.attributes.intro, movies.attributes.title)
-            img.moviesImg(src=movies.attributes.image.url, alt="")
+        if movie.attributes.image
+            - console.log(movie.attributes.intro, movie.attributes.title)
+            img.moviesImg(src=movie.attributes.image.url, alt="")
             .cardInfo
-                h2.moviesName #{movies.attributes.title}
-                .moviesDes!= movies.attributes.intro
+                h2.moviesName #{movie.attributes.title}
+                .moviesDes!= movie.attributes.intro

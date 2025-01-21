@@ -8,6 +8,7 @@
     "sass:compile": "sass src/sections/main.scss ./static/main.css",
     "sass:watch": "sass --watch src/sections/main.scss ./static/main.css",
     "test:jest": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
+    "test": "node --trace-deprecation --experimental-vm-modules node_modules/jest/bin/jest.js __tests__/express-test/movies.test.js",
     "dev": "npx pm2-dev server.js",
     "start:pm2": "npx pm2 start server.js",
     "stop:pm2": "npx pm2 stop server",
@@ -23,7 +24,8 @@
     "jest": "^29.7.0",
     "jest-environment-jsdom": "^29.7.0",
     "pm2": "^5.4.3",
-    "sass": "^1.83.0"
+    "sass": "^1.83.0",
+    "supertest": "^7.0.0"
   },
   "dependencies": {
     "express": "^4.21.2",
