@@ -1,8 +1,9 @@
 import express from 'express';
-import { renderPage, renderMoviesPage, renderMoviePage } from '../lib/renderPage.js';
+import { renderMovies, renderPage, renderMoviesPage, renderMoviePage } from '../lib/renderPage.js';
 import { errorHandler } from '../lib/middleware.js';
+import { loadMovies } from '../src/apiMovies.js';
 
-function initApp () {
+function initApp (API) {
     const app = express();
 
     app
@@ -17,7 +18,9 @@ function initApp () {
             renderPage(res, 'home');
         })
         .get('/movies', async (_req, res) => {
-            renderMoviesPage(res, 'movies');
+            /* renderMoviesPage(res, 'movies'); */ //without sending param API
+            const movies = await API;
+            renderMovies(res, 'movies', movies);
         })
         .get('/movies/:id', async (req, res) => {
             renderMoviePage(res, 'movie', req.params.id);
