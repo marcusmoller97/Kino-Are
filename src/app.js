@@ -1,7 +1,6 @@
 import express from 'express';
 import { renderMovies, renderPage, renderMoviesPage, renderMoviePage } from '../lib/renderPage.js';
 import { errorHandler } from '../lib/middleware.js';
-import { loadMovies } from '../src/apiMovies.js';
 
 function initApp (API) {
     const app = express();

@@ -1,6 +1,5 @@
 import { loadMovies } from './src/apiMovies.js';
 import initApp from './src/app.js';
-import fetch from 'node-fetch';
 
 const app = initApp(loadMovies());
 const PORT = 5080;
