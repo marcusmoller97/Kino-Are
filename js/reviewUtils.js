@@ -3,7 +3,7 @@
  */
 
 const reviewUtils = {
-  BASE_URL: "https://plankton-app-xhkom.ondigitalocean.app/api/",
+  BASE_URL: 'https://plankton-app-xhkom.ondigitalocean.app/api/',
   API: [],
   recentReviews: [],
   /**
@@ -12,7 +12,7 @@ const reviewUtils = {
   async fetchReviews() {
     try {
       const url =
-        this.BASE_URL + "reviews?populate=movie&pagination[pageSize]=1000";
+        this.BASE_URL + 'reviews?populate=movie&pagination[pageSize]=1000';
       console.log(url);
       const response = await fetch(url);
 
@@ -36,7 +36,7 @@ const reviewUtils = {
       (item) => item.attributes.movie.data !== null
     );
 
-    console.log("Filtered reviews: ", filteredReviews);
+    /*     console.log("Filtered reviews: ", filteredReviews); */
     return filteredReviews;
   },
   /**
@@ -61,53 +61,41 @@ const reviewUtils = {
    *
    */
   getTop5Movies(recentArray) {
-    let movies = {};
+    // Example output:   { "id": "101", "title": "Enchanto", "avgRating": 9.2 },
 
-    console.log("Hej", recentArray);
+    //Objekt som innehåller alla olika filmer
+    let movies = {};
+    let top5Movies = [];
 
     recentArray.forEach((review) => {
       // All ids for all reviews that are valid
       let id = review.attributes.movie.data.id;
+      let rating = review.attributes.rating;
 
       if (!movies[id]) {
-        movies[id] = review;
-        console.log("Lägger till filmen:", movies[id]);
-      } else {
-        console.log("Denna finns redan!");
+        movies[id] = {
+          title: review.attributes.movie.data.attributes.title,
+          id: id,
+          totalRating: 0,
+          ratingCount: 0,
+          averageRating: 0,
+        };
       }
+      movies[id].ratingCount++;
+      movies[id].totalRating += rating;
+      movies[id].averageRating = parseFloat(
+        movies[id].totalRating / movies[id].ratingCount
+      ).toFixed(1);
     });
-    console.log("Detta är movies loggen, senaste", movies);
 
-    /* const sortArray = recentArray.filter((item) => { */
-    /* console.log(item); */
-
-    // kolla filmnamn
-    // om filmen finns så gå in i array där film finns
-    // annars skapa nytt obect med filmnamn
-
-    //funktion sorterar betyg per film
-    //räknar ut medelvärde per film
-    // lägger till film med medelvärde betyg i object
-    /* }); */
+    let moviesArray = Object.values(movies);
+    moviesArray.sort((a, b) => b.averageRating - a.averageRating);
+    top5Movies = moviesArray.slice(0, 5);
+    return top5Movies;
   },
 };
 
 await reviewUtils.fetchReviews();
 reviewUtils.fetchRecentReviews(reviewUtils.fetchValidReviews());
-console.log("-------------------------------");
-/* console.log(reviewUtils.recentReviews); */
 const recentArray = reviewUtils.recentReviews;
 reviewUtils.getTop5Movies(recentArray);
-/* console.log(reviewUtils.API); */
-
-/* reviewUtils.fetchRecentReviews();
-console.log(reviewUtils.recentReviews); */
-
-/* reviewUtils.fetchValidReviews(); */
-
-/**
- *  TODO:
- * sortera fem högsta betyg
- * sortera på film baserat på id
- *
- **/
