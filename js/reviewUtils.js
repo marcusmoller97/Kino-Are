@@ -57,12 +57,47 @@ const reviewUtils = {
     }
     this.recentReviews = storageArray;
   },
+  /**
+   *
+   */
+  getTop5Movies(recentArray) {
+    let movies = {};
+
+    console.log("Hej", recentArray);
+
+    recentArray.forEach((review) => {
+      // All ids for all reviews that are valid
+      let id = review.attributes.movie.data.id;
+
+      if (!movies[id]) {
+        movies[id] = review;
+        console.log("Lägger till filmen:", movies[id]);
+      } else {
+        console.log("Denna finns redan!");
+      }
+    });
+    console.log("Detta är movies loggen, senaste", movies);
+
+    /* const sortArray = recentArray.filter((item) => { */
+    /* console.log(item); */
+
+    // kolla filmnamn
+    // om filmen finns så gå in i array där film finns
+    // annars skapa nytt obect med filmnamn
+
+    //funktion sorterar betyg per film
+    //räknar ut medelvärde per film
+    // lägger till film med medelvärde betyg i object
+    /* }); */
+  },
 };
 
 await reviewUtils.fetchReviews();
 reviewUtils.fetchRecentReviews(reviewUtils.fetchValidReviews());
 console.log("-------------------------------");
-console.log(reviewUtils.recentReviews);
+/* console.log(reviewUtils.recentReviews); */
+const recentArray = reviewUtils.recentReviews;
+reviewUtils.getTop5Movies(recentArray);
 /* console.log(reviewUtils.API); */
 
 /* reviewUtils.fetchRecentReviews();
