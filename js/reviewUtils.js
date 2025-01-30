@@ -13,7 +13,6 @@ const reviewUtils = {
     try {
       const url =
         this.BASE_URL + 'reviews?populate=movie&pagination[pageSize]=1000';
-      console.log(url);
       const response = await fetch(url);
 
       if (!response.ok) {
@@ -56,6 +55,7 @@ const reviewUtils = {
       }
     }
     this.recentReviews = storageArray;
+    return storageArray;
   },
   /**
    *
@@ -96,6 +96,7 @@ const reviewUtils = {
 };
 
 await reviewUtils.fetchReviews();
-reviewUtils.fetchRecentReviews(reviewUtils.fetchValidReviews());
+/* reviewUtils.fetchRecentReviews(reviewUtils.fetchValidReviews());
 const recentArray = reviewUtils.recentReviews;
-reviewUtils.getTop5Movies(recentArray);
+reviewUtils.getTop5Movies(recentArray); */
+export default reviewUtils;

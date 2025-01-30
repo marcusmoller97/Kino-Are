@@ -1,47 +1,62 @@
 import express from 'express';
-import { renderMovies, renderPage, renderMoviesPage, renderMoviePage } from '../lib/renderPage.js';
+import {
+  renderMovies,
+  renderPage,
+  renderMoviesPage,
+  renderMoviePage,
+} from '../lib/renderPage.js';
 import { errorHandler } from '../lib/middleware.js';
+import reviewUtils from '../js/reviewUtils.js';
 
-function initApp (API) {
-    const app = express();
+function initApp(API) {
+  const app = express();
 
-    app
-        .set('view engine', 'pug')
-        .set('views', 'views');
+  app.set('view engine', 'pug').set('views', 'views');
 
-    app
-        .get('/', (_req, res) => {
-            renderPage(res, 'home');
-        })
-        .get('/home', (_req, res) => {
-            renderPage(res, 'home');
-        })
-        .get('/movies', async (_req, res) => {
-            /* renderMoviesPage(res, 'movies'); */ //without sending param API
-            const movies = await API;
-            renderMovies(res, 'movies', movies);
-        })
-        .get('/movies/:id', async (req, res) => {
-            renderMoviePage(res, 'movie', req.params.id);
-        });
-
-
-    app
-        .use('/static', express.static('./static'))
-        .use('/pictures', express.static('./pictures'))
-        .use('/content', express.static('./content'))
-        .use('/js', express.static('./js'));
-
-
-    app.all('*', (_req, res) => {
-        res.status(404);
-        const status = res.statusCode;
-        res.render("404", { status });
+  app
+    .get('/', (_req, res) => {
+      renderPage(res, 'home');
+    })
+    .get('/home', (_req, res) => {
+      renderPage(res, 'home');
+    })
+    .get('/movies', async (_req, res) => {
+      /* renderMoviesPage(res, 'movies'); */ //without sending param API
+      const movies = await API;
+      renderMovies(res, 'movies', movies);
+    })
+    .get('/movies/:id', async (req, res) => {
+      renderMoviePage(res, 'movie', req.params.id);
+    })
+    .get('/top-movies', async (_req, res) => {
+      // fetch api
+      try {
+        await reviewUtils.fetchReviews();
+        const validReviews = reviewUtils.fetchValidReviews();
+        reviewUtils.fetchRecentReviews(validReviews);
+        const movies = reviewUtils.getTop5Movies(reviewUtils.recentReviews);
+        res.send(movies);
+      } catch (error) {
+        console.error(error);
+        res.status(500);
+      }
     });
 
-    app.use(errorHandler);
+  app
+    .use('/static', express.static('./static'))
+    .use('/pictures', express.static('./pictures'))
+    .use('/content', express.static('./content'))
+    .use('/js', express.static('./js'));
 
-    return app;
+  app.all('*', (_req, res) => {
+    res.status(404);
+    const status = res.statusCode;
+    res.render('404', { status });
+  });
+
+  app.use(errorHandler);
+
+  return app;
 }
 
 export default initApp;
