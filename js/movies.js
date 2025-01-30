@@ -3,6 +3,7 @@
  * @author Marcus
  */
 
+
 const movieCard = {
     movieInformationArray: [],
     /**
@@ -71,7 +72,7 @@ const movieCard = {
     /**
 
      * Function to create clickevent to open movieModal
-     * @param {*} movieArray Array to find all the information that matches the id from. 
+     * @param {*} movieArray Array to find all the information that matches the id from.
      */
     clickEventMovieModal (movieArray) {
         const section = document.querySelectorAll('article.movieWrapper');

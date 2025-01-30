@@ -52,6 +52,7 @@ body {
 					.revInfo {
 						display: grid;
 						padding-left: 10px;
+						width: 100%;
 						.name-rating {
 							display: flex;
 							justify-content: space-between;
@@ -61,24 +62,33 @@ body {
 								margin: 0px;
 							}
 						}
+						.revComment{
+							.comment{
+								margin: 0px;
+							}
+						}
 					}
 				}
 			}
-			.backBtn {
-				max-width: fit-content;
-				max-height: fit-content;
-				justify-self: center;
-				align-self: end;
-				padding: 10px 20px;
-				font-weight: bold;
-				background-color: white;
-				border: none;
-				border-radius: 7px;
-				cursor: pointer;
-				transition: background-color 0.2s;
-				&:hover {
-					background-color: #956dd5;
-					color: white;
+			.btnContainer{
+				display: flex;
+				justify-content: space-evenly;
+				button{
+					max-width: fit-content;
+					max-height: fit-content;
+					justify-self: center;
+					align-self: end;
+					padding: 10px 20px;
+					font-weight: bold;
+					background-color: white;
+					border: none;
+					border-radius: 7px;
+					cursor: pointer;
+					transition: background-color 0.2s;
+					&:hover {
+						background-color: #956dd5;
+						color: white;
+					}
 				}
 			}
 		}
