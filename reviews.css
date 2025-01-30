@@ -41,27 +41,28 @@ body {
   justify-self: center;
   margin: 0;
 }
-.reviewsBody .cardContainer .moviesRev .revCard {
+.reviewsBody .cardContainer .moviesRev .loadHere .revCard {
   display: flex;
   height: fit-content;
   background: rgba(251, 251, 251, 0.324);
   overflow: hidden;
   border-radius: 10px;
+  margin: 5px 0px 5px 0px;
 }
-.reviewsBody .cardContainer .moviesRev .revCard .revImg {
+.reviewsBody .cardContainer .moviesRev .loadHere .revCard .revImg {
   height: 10vh;
   width: 7vw;
 }
-.reviewsBody .cardContainer .moviesRev .revCard .revInfo {
+.reviewsBody .cardContainer .moviesRev .loadHere .revCard .revInfo {
   display: grid;
   padding-left: 10px;
 }
-.reviewsBody .cardContainer .moviesRev .revCard .revInfo .name-rating {
+.reviewsBody .cardContainer .moviesRev .loadHere .revCard .revInfo .name-rating {
   display: flex;
   justify-content: space-between;
   padding-right: 20px;
 }
-.reviewsBody .cardContainer .moviesRev .revCard .revInfo .name-rating p {
+.reviewsBody .cardContainer .moviesRev .loadHere .revCard .revInfo .name-rating p {
   padding: 0px;
   margin: 0px;
 }
