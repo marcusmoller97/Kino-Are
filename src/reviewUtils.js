@@ -22,6 +22,7 @@ const reviewUtils = {
       let reviews = await response.json();
 
       this.API = reviews.data;
+      return this.API;
     } catch (error) {
       console.error(error.message);
     }
@@ -79,6 +80,7 @@ const reviewUtils = {
           totalRating: 0,
           ratingCount: 0,
           averageRating: 0,
+          picture: review.attributes.movie.data.attributes.image.url,
         };
       }
       movies[id].ratingCount++;

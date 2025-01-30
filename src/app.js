@@ -6,7 +6,7 @@ import {
   renderMoviePage,
 } from '../lib/renderPage.js';
 import { errorHandler } from '../lib/middleware.js';
-import reviewUtils from '../js/reviewUtils.js';
+import reviewUtils from './reviewUtils.js';
 
 function initApp(API) {
   const app = express();
