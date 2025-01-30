@@ -14,3 +14,19 @@ function toViewingObject(apiObject){
         ...apiObject.attributes,
     };
 }
+
+function sortViewings(viewings){
+    const today = new Date();
+    const limit = new Date();
+    limit.setDate(+5);
+
+    const viewingsToShow = viewings.filter((viewing) => {
+        const showingDate = new Date(review.createdAt);
+        return showingDate <= limit && showingDate >= today;
+    })
+    if(viewingsToShow <= 10){
+        return viewingsToShow;
+    }else{
+        
+    }
+}
