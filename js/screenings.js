@@ -1,6 +1,8 @@
+import { getScreenings } from '../src/apiScreenings';
 
-const viewingsAPI = "https://plankton-app-xhkom.ondigitalocean.app/api/reviews";
-export async function getScreenings(){
+const viewingsAPI = "https://plankton-app-xhkom.ondigitalocean.app/api/screenings";
+
+async function getScreenings(){
     const response = await fetch(viewingsAPI);
     const payload = await response.json();
     const viewings = payload.data.map(toScreeningObject);
@@ -15,7 +17,7 @@ function toScreeningObject(apiObject){
     };
 }
 
-function sortScreenings(screenings){
+export function sortScreenings(screenings){
     const today = new Date();
     const limit = new Date();
     limit.setDate(+5);
@@ -37,10 +39,16 @@ function sortScreenings(screenings){
                 break;
             }
         }
-
-
-      
-        
     }
 }
+
+export async function fetchUpcomingScreenings(){
+    const screenings = await getScreenings();
+    const upcomingScreenings = sortScreenings(screenings);
+    console.log("in fetchUpcomingScreenings");
+    console.log(upcomingScreenings.length);
+    return upcomingScreenings;
+}
+
+
 

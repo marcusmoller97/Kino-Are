@@ -1,6 +1,5 @@
 import { movieCard } from "./movies.js";
 import { movies } from "./getMovies.js";
-
 // to decide where movieCards should be appended
 const figureCard = document.querySelector("figure.movies");
 
@@ -13,7 +12,6 @@ const figureCard = document.querySelector("figure.movies");
 movies.getAllMovies();
 movies.getReleasedMovies();
 movies.getUpcomingMovies();
-
 // makes the arrays from the object global
 let allMovies = movies.allMovies;
 console.log(allMovies);
@@ -28,7 +26,6 @@ findTopThreeMovies();
 document.querySelector(".allMoviesBtn").addEventListener("click", function () {
     window.location.href = "movies";
 });
-
 
 
 
@@ -64,4 +61,12 @@ async function findTopThreeMovies () {
     movieCard.createMovieCard(topThreeMovies[1].id, topThreeMovies[1].image, topThreeMovies[1].title, containerRightTop);
     movieCard.createMovieCard(topThreeMovies[2].id, topThreeMovies[2].image, topThreeMovies[2].title, containerRightBottom);
     movieCard.clickEventMovieModal(topThreeMovies);
+}
+showUpcomingScreenings();
+
+async function showUpcomingScreenings(){
+    const response = await fetch("/api/screenings/upcomingScreenings");
+    const screenings = await response.json();
+    console.log("fetched screenings:");
+    console.log(screenings);
 }

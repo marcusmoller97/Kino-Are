@@ -1,4 +1,5 @@
 import express from 'express';
+import { fetchUpcomingScreenings } from '../js/screenings.js';
 import { renderMovies, renderPage, renderMoviesPage, renderMoviePage } from '../lib/renderPage.js';
 import { errorHandler } from '../lib/middleware.js';
 
@@ -23,6 +24,13 @@ function initApp (API) {
         })
         .get('/movies/:id', async (req, res) => {
             renderMoviePage(res, 'movie', req.params.id);
+        })
+        .get('/api/screenings/upcomingScreenings', async (req, res) => {
+            console.log("Here there will be upcoming screenings");
+            const screenings = await fetchUpcomingScreenings();
+            console.log(screenings);
+            res.send(screenings);
+
         });
 
 
