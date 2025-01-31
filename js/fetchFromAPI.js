@@ -21,7 +21,16 @@ addEventListener('DOMContentLoaded', async () => {
 
             const screeningsH3 = document.createElement('h3');
             const list = document.createElement('ul');
-
+            // to get wich weekday.
+            const weekday = [
+                'Monday',
+                'Tuesday',
+                'Wednsday',
+                'Thursday',
+                'Friday',
+                'Saturday',
+                'Sunday'
+            ]
             screenings.forEach((item) => {
                 // formate date to day month year time
                 const date = new Date(item.attributes.start_time);
@@ -32,8 +41,10 @@ addEventListener('DOMContentLoaded', async () => {
                     minute: "2-digit",
                     hour12: false,
                 })
+                
+                const screeningDay = weekday[date.getDay()];
                 const listItem = document.createElement('li');
-                listItem.innerHTML = formateedDate;
+                listItem.innerHTML = screeningDay + " " + formateedDate;
                 console.log(item.attributes.start_time);
                 // append listItem to list
                 list.append(listItem);
