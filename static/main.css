@@ -1304,4 +1304,9 @@ article.movie .cardInfo h2, article.movie .cardInfo p {
   margin-right: auto;
 }
 
+/* screenings */
+.screeningsTable {
+  background-color: #0e0e1b;
+}
+
 /*# sourceMappingURL=main.css.map */
