@@ -6,14 +6,7 @@ async function fetchRev() {
         const result = await response.json();
         const reviews = result.data;
 
-        reviews.forEach(review => {
-            const { name, comment, rating, author } = review.attributes;
-            console.log(`Name: ${name}, Comment: ${comment}, Rating: ${rating}, Author: ${author}`);
-        });
-        reviews.forEach(review => {
-            const { name, comment, rating, author } = review.attributes;
-            gRevCard(author, comment, rating);
-        });
+        createRevPage(reviews);
     } catch (error) {
         console.error("Error fetching reviews:", error);
     }
@@ -21,13 +14,26 @@ async function fetchRev() {
 
 // Call the function to execute it
 fetchRev();
-//----------------review generator---------------
-gRevCard();
-function gRevCard(author, comment, rating) {
+
+function createRevPage(reviews) {
     const container = document.querySelector(".revPages");
-    container.innerHTML = `
-        <div class="revPage active">
-            <div class="card">
+    container.innerHTML = '';
+
+    let pageCount = Math.ceil(reviews.length / 5);
+    for (let i = 0; i < pageCount; i++) {
+        const revPage = document.createElement('div');
+        revPage.classList.add('revPage');
+        if (i === 0) revPage.classList.add('active');
+
+        const start = i * 5;
+        const end = start + 5;
+        const pageReviews = reviews.slice(start, end);
+
+        pageReviews.forEach(review => {
+            const { name, comment, rating, author } = review.attributes;
+            const card = document.createElement('div');
+            card.classList.add('card');
+            card.innerHTML = `
                 <img src="/pictures/kommenter1600.png" alt="User 1" />
                 <div class="revCardInfo">
                     <div class="name-stars">
@@ -36,39 +42,38 @@ function gRevCard(author, comment, rating) {
                     </div>
                     <p>“${comment}”</p>
                 </div>
-            </div>
-        </div>
-        <div class="dots">
-            <span class="dot active" onclick="changeSlide(0)"></span>
-            <span class="dot" onclick="changeSlide(1)"></span>
-            <span class="dot" onclick="changeSlide(2)"></span>
-        </div>
-    `;
+            `;
+            revPage.appendChild(card);
+        });
+
+        container.appendChild(revPage);
+    }
+
+    createDots(pageCount);
 }
 
-//---------------pagingation funtion---------
-let currentIndex = 0;
-const revPage = document.querySelectorAll(".revPage");
-const dots = document.querySelectorAll(".dot");
+function createDots(pageCount) {
+    const dotsContainer = document.createElement('div');
+    dotsContainer.classList.add('dots');
 
-function showSlide(index) {
-	revPage.forEach((revPage, i) => {
-		revPage.classList.remove("active");
-		dots[i].classList.remove("active");
-	});
+    for (let i = 0; i < pageCount; i++) {
+        const dot = document.createElement('span');
+        dot.classList.add('dot');
+        if (i === 0) dot.classList.add('active');
+        dot.setAttribute('onclick', `changeSlide(${i})`);
+        dotsContainer.appendChild(dot);
+    }
 
-	revPage[index].classList.add("active");
-	dots[index].classList.add("active");
+    document.querySelector(".revPages").appendChild(dotsContainer);
 }
 
 function changeSlide(index) {
-	currentIndex = index;
-	showSlide(currentIndex);
-}
-showSlide(currentIndex);
+    const pages = document.querySelectorAll('.revPage');
+    const dots = document.querySelectorAll('.dot');
 
-// Auto-slide every 5 seconds
-// setInterval(() => {
-//     currentIndex = (currentIndex + 1) % revPage.length;
-//     showSlide(currentIndex);
-// }, 5000);
+    pages.forEach(page => page.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    pages[index].classList.add('active');
+    dots[index].classList.add('active');
+}
