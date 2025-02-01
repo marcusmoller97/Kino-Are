@@ -1,6 +1,7 @@
 import express from 'express';
 import { renderMovies, renderPage, renderMoviesPage, renderMoviePage } from '../lib/renderPage.js';
 import { errorHandler } from '../lib/middleware.js';
+// import { getKikoContent } from '../lib/kiko.js';
 
 function initApp (API) {
     const app = express();
@@ -23,6 +24,10 @@ function initApp (API) {
         })
         .get('/movies/:id', async (req, res) => {
             renderMoviePage(res, 'movie', req.params.id);
+        })
+        .get('/kiko', async (_req, res) => {
+            // const kikoContent = await getKikoContent();
+            renderPage(res, 'kiko');
         });
 
 
@@ -30,7 +35,7 @@ function initApp (API) {
         .use('/static', express.static('./static'))
         .use('/pictures', express.static('./pictures'))
         .use('/content', express.static('./content'))
-        .use('/js', express.static('./js'));
+        .use('/js', express.static('./public')); // Ensure this line is correct
 
 
     app.all('*', (_req, res) => {

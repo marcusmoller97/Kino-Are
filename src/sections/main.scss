@@ -1,5 +1,6 @@
 @use 'sass:math';
 @use "moviesPage.scss" as *;
+@use "reviews.scss" as *;
 $backgroundColor: #0e0e1b;
 $buttonColor: #175dcc;
 $textColor: #ffffff;
@@ -73,7 +74,7 @@ header {
    .cinemaSeats {
       width: 100%;
 
-      
+
       .picUnderNav {
          object-fit: cover;
          width: 100%;
@@ -111,7 +112,7 @@ header {
 }
 
 .allMoviesBtn {
-  
+
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -316,8 +317,8 @@ header {
       display: grid;
       grid-template-rows: 1fr 1fr;
       gap: 5px;
-    
-    
+
+
 
       .movieCardTop {
          background-color: #0e0e1b;
@@ -473,18 +474,18 @@ footer {
 //----------style of moviecards-----------
 .allMovies {
    display: flex;
-   flex-direction: column; 
-   align-items: center; 
-   gap: 20px; 
-   margin: 20px; 
+   flex-direction: column;
+   align-items: center;
+   gap: 20px;
+   margin: 20px;
 }
 
 .movies {
    display: flex;
-   flex-wrap: wrap; 
-   gap: 15px; 
-   justify-content: center; 
-   align-items: flex-start; 
+   flex-wrap: wrap;
+   gap: 15px;
+   justify-content: center;
+   align-items: flex-start;
 }
 
 .movieWrapper {
@@ -493,7 +494,7 @@ footer {
    margin: 10px 0;
    border-radius: 10px;
    overflow: hidden;
-   width: 300px; 
+   width: 300px;
    transition: transform 0.2s, box-shadow 0.2s;
 }
 
@@ -510,7 +511,7 @@ footer {
 .movieCardHeader {
    color: white;
    text-align: center;
-   padding: 10px; 
+   padding: 10px;
 }
 
 .movieBtn {
