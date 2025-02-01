@@ -1,17 +1,22 @@
 async function fetchRev() {
-	try {
-		const response = await fetch(
-			"https://plankton-app-xhkom.ondigitalocean.app/api/reviews"
-		);
-		const data = await response.json();
-		console.log(data);
-		return data.reviews;
-	} catch (error) {
-		console.error("Error fetching reviews:", error);
-		return [];
-	}
+    try {
+        const response = await fetch(
+            "https://plankton-app-xhkom.ondigitalocean.app/api/reviews"
+        );
+        const result = await response.json();
+        const reviews = result.data;
+
+        reviews.forEach(review => {
+            const { name, comment, rating, author } = review.attributes;
+            console.log(`Name: ${name}, Comment: ${comment}, Rating: ${rating}, Author: ${author}`);
+        });
+    } catch (error) {
+        console.error("Error fetching reviews:", error);
+    }
 }
 
+// Call the function to execute it
+fetchRev();
 //----------------review generator---------------
 gRevCard();
 function gRevCard() {
@@ -19,7 +24,7 @@ function gRevCard() {
     container.innerHTML = `
         <div class="revPage active">
             <div class="card">
-                <img src="kommenter1600.png" alt="User 1" />
+                <img src="/pictures/kommenter1600.png" alt="User 1" />
                 <div class="revCardInfo">
                     <div class="name-stars">
                         <h3>Alexis</h3>
@@ -31,7 +36,7 @@ function gRevCard() {
         </div>
         <div class="revPage">
             <div class="card">
-                <img src="kommenter1600.png" alt="User 1" />
+                <img src="/pictures/kommenter1600.png" alt="User 1" />
                 <div class="revCardInfo">
                     <div class="name-stars">
                         <h3>Alexis</h3>
@@ -43,7 +48,7 @@ function gRevCard() {
         </div>
         <div class="revPage">
             <div class="card">
-                <img src="kommenter1600.png" alt="User 1" />
+                <img src="/pictures/kommenter1600.png" alt="User 1" />
                 <div class="revCardInfo">
                     <div class="name-stars">
                         <h3>Alexis</h3>
