@@ -497,17 +497,13 @@
   background-color: #0e0e1b;
 }
 
-body {
-  font-family: Arial, sans-serif;
-  background: #2e004d;
-  color: white;
+.revSection {
+  padding: 50px;
+  background-color: #2e004d;
+  color: black;
   text-align: center;
   margin: 0;
   padding: 0;
-}
-
-.revSection {
-  padding: 50px;
 }
 
 .revContainer {
@@ -525,6 +521,10 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   transition: 0.5s ease-in-out;
+}
+.revCard h3, .revCard p {
+  color: black;
+  font-family: Arial, sans-serif;
 }
 .revCard.active {
   display: block;

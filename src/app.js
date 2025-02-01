@@ -28,15 +28,18 @@ function initApp (API) {
         .get('/kiko', async (_req, res) => {
             // const kikoContent = await getKikoContent();
             renderPage(res, 'kiko');
+        })
+        .get('/api/kikoContent', async (_req, res) => {
+            // Replace with actual content fetching logic
+            const kikoContent = { message: "Dynamic content loaded" };
+            res.json(kikoContent);
         });
-
 
     app
         .use('/static', express.static('./static'))
         .use('/pictures', express.static('./pictures'))
         .use('/content', express.static('./content'))
         .use('/js', express.static('./public')); // Ensure this line is correct
-
 
     app.all('*', (_req, res) => {
         res.status(404);
