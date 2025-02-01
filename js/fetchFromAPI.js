@@ -10,10 +10,6 @@ addEventListener('DOMContentLoaded', async () => {
         }
         let screenings = await response.json();
 
-        /* const screeningsArray = []; */
-        /* screeningsArray.push(screenings); */
-
-        /* console.log(screeningsArray); */
         const screeningsDiv = document.querySelector('.screeningsTable');
 
         if (screenings.length > 0) {
@@ -22,15 +18,15 @@ addEventListener('DOMContentLoaded', async () => {
             const screeningsH3 = document.createElement('h3');
             const list = document.createElement('ul');
             // to get wich weekday.
-            const weekday = [
-                'Monday',
-                'Tuesday',
-                'Wednsday',
-                'Thursday',
-                'Friday',
-                'Saturday',
-                'Sunday'
-            ]
+            const weekday = {
+                1: 'Monday',
+                2: 'Tuesday',
+                3: 'Wednsday',
+                4: 'Thursday',
+                5: 'Friday',
+                6: 'Saturday',
+                7: 'Sunday'
+            };
             screenings.forEach((item) => {
                 // formate date to day month year time
                 const date = new Date(item.attributes.start_time);
@@ -40,11 +36,11 @@ addEventListener('DOMContentLoaded', async () => {
                     hour: "2-digit",
                     minute: "2-digit",
                     hour12: false,
-                })
-                
+                });
+
                 const screeningDay = weekday[date.getDay()];
                 const listItem = document.createElement('li');
-                listItem.innerHTML = screeningDay + " " + formateedDate;
+                listItem.innerHTML = `${item.attributes.room}: ${screeningDay} ${formateedDate}`;
                 console.log(item.attributes.start_time);
                 // append listItem to list
                 list.append(listItem);

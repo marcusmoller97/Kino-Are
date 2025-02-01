@@ -21,7 +21,7 @@ async function fetchScreeningsMovie (id) {
 }
 
 /**
- * 
+ * Function to sort on the upcoming movies
  * @param {*} apiArray takes the data from the api with all screenings times for a movie.
  * @returns Returns an array with just the upcoming screenings based on the date.
  */
