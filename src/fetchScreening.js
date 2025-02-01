@@ -28,19 +28,13 @@ async function fetchScreeningsMovie (id) {
 function upcomingScreenings (apiArray) {
     // todays date
     const date = new Date();
-    const screeningArray = apiArray.map((item) => {
+    const screeningArray = apiArray.filter((item) => {
         const compareDate = new Date(item.attributes.start_time);
-        if (compareDate > date) {
-            return item;
-        }
+        return compareDate > date;
     });
 
     return screeningArray;
 }
-
-let payload = await fetchScreeningsMovie(8);
-payload = upcomingScreenings(payload);
-
 
 export {
     upcomingScreenings,
