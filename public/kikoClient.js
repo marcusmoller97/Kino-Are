@@ -10,6 +10,10 @@ async function fetchRev() {
             const { name, comment, rating, author } = review.attributes;
             console.log(`Name: ${name}, Comment: ${comment}, Rating: ${rating}, Author: ${author}`);
         });
+        reviews.forEach(review => {
+            const { name, comment, rating, author } = review.attributes;
+            gRevCard(author, comment, rating);
+        });
     } catch (error) {
         console.error("Error fetching reviews:", error);
     }
@@ -19,7 +23,7 @@ async function fetchRev() {
 fetchRev();
 //----------------review generator---------------
 gRevCard();
-function gRevCard() {
+function gRevCard(author, comment, rating) {
     const container = document.querySelector(".revPages");
     container.innerHTML = `
         <div class="revPage active">
@@ -27,34 +31,10 @@ function gRevCard() {
                 <img src="/pictures/kommenter1600.png" alt="User 1" />
                 <div class="revCardInfo">
                     <div class="name-stars">
-                        <h3>Alexis</h3>
-                        <p>5</p>
+                        <h3>${author}</h3>
+                        <p>${rating}</p>
                     </div>
-                    <p>“This page is really beautiful. The best thing is the smooth slider with great UI design.”</p>
-                </div>
-            </div>
-        </div>
-        <div class="revPage">
-            <div class="card">
-                <img src="/pictures/kommenter1600.png" alt="User 1" />
-                <div class="revCardInfo">
-                    <div class="name-stars">
-                        <h3>Alexis</h3>
-                        <p>5</p>
-                    </div>
-                    <p>“This page is really beautiful. The best thing is the smooth slider with great UI design.”</p>
-                </div>
-            </div>
-        </div>
-        <div class="revPage">
-            <div class="card">
-                <img src="/pictures/kommenter1600.png" alt="User 1" />
-                <div class="revCardInfo">
-                    <div class="name-stars">
-                        <h3>Alexis</h3>
-                        <p>5</p>
-                    </div>
-                    <p>“This page is really beautiful. The best thing is the smooth slider with great UI design.”</p>
+                    <p>“${comment}”</p>
                 </div>
             </div>
         </div>
