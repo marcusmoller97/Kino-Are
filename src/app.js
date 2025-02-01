@@ -2,7 +2,7 @@ import express from 'express';
 import { renderMovies, renderPage, renderMoviesPage, renderMoviePage } from '../lib/renderPage.js';
 import { errorHandler } from '../lib/middleware.js';
 //import { upcomingScreenings, fetchScreeningsMovie } from './backendJs/fetchScreening.js';
-import { apiRouter } from './backendJs/API.js';
+import { apiRouter } from './API.js';
 
 function initApp (API) {
     const app = express();

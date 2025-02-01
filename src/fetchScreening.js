@@ -45,4 +45,4 @@ payload = upcomingScreenings(payload);
 export {
     upcomingScreenings,
     fetchScreeningsMovie
-} 
+};

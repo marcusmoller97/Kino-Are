@@ -1,6 +1,6 @@
 import { describe, expect, it, jest, beforeEach } from '@jest/globals';
 
-import { fetchScreeningsMovie, upcomingScreenings } from '../../src/backendJs/fetchScreening';
+import { fetchScreeningsMovie, upcomingScreenings } from '../../src/fetchScreening';
 
 //TODO: test for fetchScreeningMovie(id)
 // test fetchScreeningsMovie(id) returns empty array if no screening in api for movie.
