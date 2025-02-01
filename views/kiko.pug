@@ -1,11 +1,8 @@
 extends layout/main-layout.pug
+
 block content
     section.revSection
         h2 What people are saying
-        .revContainer
-
-        .dots
-            span.dot.active(onclick='changeSlide(0)')
-            span.dot(onclick='changeSlide(1)')
-            span.dot(onclick='changeSlide(2)')
+        .revPages
+        //--------conde will be generated here-------
     script(src='/js/kikoClient.js')
