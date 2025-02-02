@@ -9,7 +9,7 @@ block content
                 .moviesDes!= movie.attributes.intro
 
     // Include the review section from kiko.pug
-    section.revSection
+    section.revSection(movie=movie.id)
         h2 What people are saying
         .revPages
         //--------content will be generated here-------

@@ -1,3 +1,9 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const revSection = document.querySelector('.revSection');
+    const movieId = revSection.getAttribute('movie');
+    fetchRev(movieId);
+});
+
 async function fetchRev(movieId) {
     try {
         const response = await fetch(
@@ -11,8 +17,6 @@ async function fetchRev(movieId) {
         console.error("Error fetching reviews:", error);
     }
 }
-
-fetchRev(2);
 
 function createRevPage(reviews) {
     const container = document.querySelector(".revPages");
