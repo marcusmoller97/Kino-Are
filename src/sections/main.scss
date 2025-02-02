@@ -1,15 +1,15 @@
-@use "sass:math";
-@use "moviesPage.scss" as *;
+@use 'sass:math';
+@use 'moviesPage.scss' as *;
 $backgroundColor: #0e0e1b;
 $buttonColor: #175dcc;
 $textColor: #ffffff;
-@use "normalize";
+@use 'normalize';
 
 * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: "Roboto", serif;
+  font-family: 'Roboto', serif;
   color: $textColor;
 }
 
@@ -84,7 +84,7 @@ header {
 * {
   margin: 0px;
   padding: 0px;
-  font-family: "Roboto", serif;
+  font-family: 'Roboto', serif;
 }
 
 .skiReviewerSection {
@@ -516,7 +516,7 @@ footer {
   margin: 10px;
   border: none;
   border-radius: 10px;
-  font-family: "Work Sans", sans-serif;
+  font-family: 'Work Sans', sans-serif;
   font-weight: bold;
   cursor: pointer;
   background-color: #2d7dfe;
@@ -578,6 +578,25 @@ article.movie {
     display: block;
     margin-left: auto;
     margin-right: auto;
+  }
+}
+
+/* screenings */
+.screeningsTable {
+  background-color: $backgroundColor;
+  margin: 0.5rem 0 5rem 0;
+
+  padding: 2rem;
+  h2,
+  h3 {
+    text-align: center;
+    padding: 0.5rem;
+  }
+  ul {
+    li {
+      text-align: center;
+      list-style-type: none;
+    }
   }
 }
 

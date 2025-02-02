@@ -4,11 +4,6 @@ import { movies } from './getMovies.js';
 // to decide where movieCards should be appended
 const figureCard = document.querySelector('figure.movies');
 
-// create cards from all the elements in an array.
-//movieCard.createMovieCardsFromArray(array, figureCard);
-// opens movie modal box from movie card.
-//movieCard.clickEventMovieModal(array);
-
 // reads json file to diffrent arrays in movie objects.
 movies.getAllMovies();
 movies.getReleasedMovies();

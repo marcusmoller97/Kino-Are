@@ -6,7 +6,7 @@ import {
   renderMoviePage,
 } from '../lib/renderPage.js';
 import { errorHandler } from '../lib/middleware.js';
-import reviewUtils from './reviewUtils.js';
+import { apiRouter } from './API.js';
 
 function initApp(API) {
   const app = express();
@@ -27,22 +27,10 @@ function initApp(API) {
     })
     .get('/movies/:id', async (req, res) => {
       renderMoviePage(res, 'movie', req.params.id);
-    })
-    .get('/top-movies', async (_req, res) => {
-      // fetch api
-      try {
-        await reviewUtils.fetchReviews();
-        const validReviews = reviewUtils.fetchValidReviews();
-        reviewUtils.fetchRecentReviews(validReviews);
-        const movies = reviewUtils.getTop5Movies(reviewUtils.recentReviews);
-        res.send(movies);
-      } catch (error) {
-        console.error(error);
-        res.status(500);
-      }
     });
 
   app
+    .use(apiRouter)
     .use('/static', express.static('./static'))
     .use('/pictures', express.static('./pictures'))
     .use('/content', express.static('./content'))
