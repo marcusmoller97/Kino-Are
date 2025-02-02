@@ -12,7 +12,6 @@ async function fetchRev(movieId) {
     }
 }
 
-// Call the function with a specific movie ID to execute it
 fetchRev(2);
 
 function createRevPage(reviews) {

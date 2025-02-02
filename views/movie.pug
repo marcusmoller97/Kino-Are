@@ -7,3 +7,12 @@ block content
             .cardInfo
                 h2.moviesName #{movie.attributes.title}
                 .moviesDes!= movie.attributes.intro
+
+    // Include the review section from kiko.pug
+    section.revSection
+        h2 What people are saying
+        .revPages
+        //--------content will be generated here-------
+
+    // Include the script for review.js
+    script(src='/js/review.js')

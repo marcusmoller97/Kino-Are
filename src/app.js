@@ -29,10 +29,19 @@ function initApp (API) {
             // const kikoContent = await getKikoContent();
             renderPage(res, 'kiko');
         })
+        .get('/review', async (_req, res) => {
+            // const reviewContent = await getReviewContent();
+            renderPage(res, 'review');
+        })
         .get('/api/kikoContent', async (_req, res) => {
             // Replace with actual content fetching logic
             const kikoContent = { message: "Dynamic content loaded" };
             res.json(kikoContent);
+        })
+        .get('/api/reviewContent', async (_req, res) => {
+            // Replace with actual content fetching logic
+            const reviewContent = { message: "Dynamic content loaded" };
+            res.json(reviewContent);
         });
 
     app
