@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	const movieId = revSection.getAttribute("movie");
 	fetchRev(movieId);
 });
-
 async function fetchRev(movieId) {
 	try {
 		const response = await fetch(
@@ -17,21 +16,17 @@ async function fetchRev(movieId) {
 		console.error("Error fetching reviews:", error);
 	}
 }
-
 function createRevPage(reviews) {
 	const container = document.querySelector(".revPages");
 	container.innerHTML = "";
-
 	let pageCount = Math.ceil(reviews.length / 5);
 	for (let i = 0; i < pageCount; i++) {
 		const revPage = document.createElement("div");
 		revPage.classList.add("revPage");
 		if (i === 0) revPage.classList.add("active");
-
 		const start = i * 5;
 		const end = start + 5;
 		const pageReviews = reviews.slice(start, end);
-
 		pageReviews.forEach((review) => {
 			const { name, comment, rating, author } = review.attributes;
 			const card = document.createElement("div");
@@ -57,7 +52,6 @@ function createRevPage(reviews) {
 
 	createDots(pageCount);
 }
-
 function createDots(pageCount) {
 	const dotsContainer = document.createElement("div");
 	dotsContainer.classList.add("dots");
@@ -72,7 +66,6 @@ function createDots(pageCount) {
 
 	document.querySelector(".revPages").appendChild(dotsContainer);
 }
-
 function changeSlide(index) {
 	const pages = document.querySelectorAll(".revPage");
 	const dots = document.querySelectorAll(".dot");
