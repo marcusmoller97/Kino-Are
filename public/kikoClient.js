@@ -1,7 +1,7 @@
-async function fetchRev() {
+async function fetchRev(movieId) {
     try {
         const response = await fetch(
-            "https://plankton-app-xhkom.ondigitalocean.app/api/reviews"
+            `https://plankton-app-xhkom.ondigitalocean.app/api/reviews?filters[movie]=${movieId}`
         );
         const result = await response.json();
         const reviews = result.data;
@@ -12,8 +12,8 @@ async function fetchRev() {
     }
 }
 
-// Call the function to execute it
-fetchRev();
+// Call the function with a specific movie ID to execute it
+fetchRev(2);
 
 function createRevPage(reviews) {
     const container = document.querySelector(".revPages");
