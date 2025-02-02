@@ -41,7 +41,10 @@ function createRevPage(reviews) {
                 <div class="revCardInfo">
                     <div class="name-stars">
                         <h3>${author}</h3>
+                        <div>
+                        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
                         <p>${rating}</p>
+                        </div>
                     </div>
                     <p>“${comment}”</p>
                 </div>
