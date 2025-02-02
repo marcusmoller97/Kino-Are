@@ -87,27 +87,26 @@ describe('Tests that fetchReviews is working', () => {
   it('Should return only reviews from the last 30 days', () => {
     const today = new Date();
     const tenDaysAgo = new Date();
-    tenDaysAgo.setDate(today.getDate() - 10); // ✅ Corrected to 10 days ago
+    tenDaysAgo.setDate(today.getDate() - 10);
 
     const fortyDaysAgo = new Date();
-    fortyDaysAgo.setDate(today.getDate() - 40); // ✅ 40 days ago remains the same
-
+    fortyDaysAgo.setDate(today.getDate() - 40);
     const mockReviews = [
       {
         attributes: {
-          createdAt: tenDaysAgo.toISOString(), // ✅ Should be included (10 days ago)
+          createdAt: tenDaysAgo.toISOString(),
           movie: { data: { id: 1, attributes: { title: 'Movie A' } } },
         },
       },
       {
         attributes: {
-          createdAt: fortyDaysAgo.toISOString(), // ❌ Should be filtered out (40 days ago)
+          createdAt: fortyDaysAgo.toISOString(),
           movie: { data: { id: 2, attributes: { title: 'Movie B' } } },
         },
       },
       {
         attributes: {
-          createdAt: today.toISOString(), // ✅ Should be included (today)
+          createdAt: today.toISOString(),
           movie: { data: { id: 3, attributes: { title: 'Movie C' } } },
         },
       },
@@ -116,12 +115,10 @@ describe('Tests that fetchReviews is working', () => {
     // Call function under test
     const recentReviews = reviewUtils.fetchRecentReviews(mockReviews);
 
-    console.log('Filtered Recent Reviews:', recentReviews); // ✅ Debugging output
+    console.log('Filtered Recent Reviews:', recentReviews);
 
-    // ✅ Expect only 2 reviews (within the last 30 days)
     expect(recentReviews).toHaveLength(2);
 
-    // ✅ Ensure correct movies remain (IDs 1 & 3)
     expect(recentReviews[0].attributes.movie.data.id).toBe(1);
     expect(recentReviews[1].attributes.movie.data.id).toBe(3);
   });
