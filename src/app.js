@@ -1,7 +1,6 @@
 import express from 'express';
 import { renderMovies, renderPage, renderMoviesPage, renderMoviePage } from '../lib/renderPage.js';
 import { errorHandler } from '../lib/middleware.js';
-//import { upcomingScreenings, fetchScreeningsMovie } from './backendJs/fetchScreening.js';
 import { apiRouter } from './API.js';
 
 function initApp (API) {
@@ -25,24 +24,10 @@ function initApp (API) {
         })
         .get('/movies/:id', async (req, res) => {
             renderMoviePage(res, 'movie', req.params.id);
-        })
-        /* .get('/screenings/upcoming/:id', async (req, res) => {
-            try {
-                const movieId = req.params.id;
-                console.log(movieId)
-
-                let payload = await fetchScreeningsMovie(movieId);
-                payload = upcomingScreenings(payload);
-                res.send(payload);
-            } catch (error) {
-                console.error(error);
-                res.status(500);
-            }
-        }) */
-
+        });
 
     app
-        .use(apiRouter) //does the same thing as the code thats been commented out.
+        .use(apiRouter)
         .use('/static', express.static('./static'))
         .use('/pictures', express.static('./pictures'))
         .use('/content', express.static('./content'))
