@@ -36,9 +36,4 @@ document.addEventListener("DOMContentLoaded", () => {
             searchSection.style.minWidth = "40vw";
         }
     }); */
-
-    // Log the scroll value
-    window.addEventListener("scroll", () => {
-        console.log("value: " + window.scrollY);
-    });
 });

@@ -6,13 +6,11 @@ html
     each item in menuItems
       if item.active
         title #{item.label}
-        break
     meta(name="viewport" content="width=device-width, initial-scale=1")
     link(rel="stylesheet", type="text/css", media="screen", href="/static/main.css")
-    if !menuItems[1].active
-      script(type="module", src="js/main.js", defer)
+    script(type="module", src="/js/main.js", defer)
     script(src="https://kit.fontawesome.com/8357c99e29.js", crossorigin="anonymous")
-    <!-- The script above needs to be added on every single HTML file that contains movie cards -->
+    // ...existing code...
   body
     header
       img.kinoLogo(src="/pictures/logoHead.png", alt="logotyp för Kino", usemap="#logoMap")
