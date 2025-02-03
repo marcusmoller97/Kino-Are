@@ -4,6 +4,10 @@ block content
     article.movie
         if movie.attributes.image
             img.moviesImg(src=movie.attributes.image.url, alt="")
-            .cardInfo
-                h2.moviesName #{movie.attributes.title}
-                .moviesDes!= movie.attributes.intro
+        .cardInfo
+            h2.moviesName #{movie.attributes.title}
+            .moviesDes!= movie.attributes.intro
+    hr
+    section.screeningsTable 
+        h2 Upcoming screenings
+        
