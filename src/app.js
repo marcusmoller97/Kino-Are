@@ -25,8 +25,11 @@ function initApp (API) {
             renderMoviePage(res, 'movie', req.params.id);
         });
 
+        app.use(express.json());
+
        app.post('/movies/review', async (req, res) => { 
-          const reviewData = req.body;
+            const reviewData = req.body;
+            console.log("Mottagen data:", req.body);
         
           try {
             const response = await fetch('https://plankton-app-xhkom.ondigitalocean.app/api/reviews', {

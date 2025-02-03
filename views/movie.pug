@@ -31,12 +31,14 @@ block content
 
             const movieId = "#{movie.id}"; 
             const reviewData = {
-                name: document.getElementById("name").value,
-                rating: document.getElementById("rating").value,
-                comment: document.getElementById("comment").value,
-                movie: movieId,  
-                createdAt: new Date().toISOString(),
-                updatedAt: new Date().toISOString()
+                data: {
+                    name: document.getElementById("name").value,
+                    rating: document.getElementById("rating").value,
+                    comment: document.getElementById("comment").value,
+                    movie: movieId,  
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                }
             };
 
 
@@ -46,5 +48,14 @@ block content
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(reviewData)
-            })       
+            })
+            .then(response => response.json())
+            .then(data => {
+                 console.log("Recension skickad:", data);
+                 alert("Recension skickad!");
+            })
+            .catch(error => {
+                console.error("Fel vid skickande av recension:", error);
+                alert("Fel vid skickande av recension.");  
+            });
         });
