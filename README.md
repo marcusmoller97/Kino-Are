@@ -16,3 +16,6 @@
   * Kunna hämta efter film och kommande visningar (max 10 screenings på startsida).
 * GET-request screening/upcoming/:id
   * Kunna hämta information om de kommande filmvisningar om en film.
+
+# Server web url
+* **https://kino-are.onrender.com**
