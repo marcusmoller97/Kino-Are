@@ -1,13 +1,15 @@
 //import { getScreenings } from '/apiScreenings';
 
-const viewingsAPI = "https://plankton-app-xhkom.ondigitalocean.app/api/screenings";
+const viewingsAPI = "https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie";
 
 async function getScreenings(){
     const response = await fetch(viewingsAPI);
     const payload = await response.json();
-    const viewings = payload.data.map(toScreeningObject);
-    console.log(viewings);
-    return viewings;
+    const screenings = payload.data.map(toScreeningObject);
+   //const screenings = payload.data;
+    console.log(screenings);
+    console.log(screenings[0].movie.data.attributes.title);
+    return screenings;
 }
 
 function toScreeningObject(apiObject){
@@ -31,25 +33,53 @@ const fakeScreenings = [ {
     id: 111,
     start_time: date1,
     room: 'Stora salongen',
-    createdAt: '2025-01-02T14:19:16.064Z'
+    createdAt: '2025-01-02T14:19:16.064Z',
+    movie: { data: {
+        id: 1,
+        attributes: {
+            title: "Fire walk with me",
+            imdbID: "tt0105665"
+        }
+    }}
 },
 {
     id: 112,
     start_time: date2,
     room: 'Stora salongen',
-    createdAt: '2025-01-0217:00:00:000Z'
+    createdAt: '2025-01-0217:00:00:000Z',
+    movie: { data: {
+        id: 1,
+        attributes: {
+            title: "Fire walk with me",
+            imdbID: "tt0105665"
+        }
+    }}
 },
 {
     id: 113,
     start_time: date3,
     room: 'Stora salongen',
-    createdAt: '2025-01-02T14:19:16.064Z'
+    createdAt: '2025-01-02T14:19:16.064Z',
+    movie: { data: {
+        id: 1,
+        attributes: {
+            title: "Fire walk with me",
+            imdbID: "tt0105665"
+        }
+    }}
 },
 {
     id: 114,
     start_time: date4,
     room: 'Stora salongen',
-    createdAt: '2025-01-0217:00:00:000Z'
+    createdAt: '2025-01-0217:00:00:000Z',
+    movie: { data: {
+        id: 1,
+        attributes: {
+            title: "Fire walk with me",
+            imdbID: "tt0105665"
+        }
+    }}
 }]
 
 

@@ -70,33 +70,20 @@ async function showUpcomingScreenings(){
     const screenings = await response.json();
     console.log("fetched screenings:");
     console.log(screenings);
+
+    const screeningsWrapper = document.querySelector(".upcomingScreenings");
+    const screeningsList = document.createElement("ul");
+    screeningsList.classList.add("screeningsList");
+
+    screeningsWrapper.append(screeningsList);
+    screenings.forEach((screening)=>{
+        const date = screening.start_time.toString();
+        const screeningTime = date.toDateString();
+        const listItem = document.createElement("li");
+        listItem.classList.add("screeningsListItem");
+        listItem.innerHTML = screening.movie.data.attributes.title + " "+ screeningTime;
+        screeningsWrapper.append(listItem);
+    })
 }
-/*const fakeScreenings = [ {
-    id: 111,
-    start_time: '2025-02-13',
-    room: 'Stora salongen',
-    createdAt: '2025-01-02'
-},
-{
-    id: 112,
-    start_time: '2025-02-01',
-    room: 'Stora salongen',
-    createdAt: '2025-01-02'
-},
-{
-    id: 113,
-    start_time: '2025-02-03',
-    room: 'Stora salongen',
-    createdAt: '2025-01-02'
-},
-{
-    id: 114,
-    start_time: '2025-01-13',
-    room: 'Stora salongen',
-    createdAt: '2025-01-02'
-}
-];
 
 
-const array = sortScreenings(fakeScreenings);
-console.log(array);*/
