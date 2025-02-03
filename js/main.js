@@ -1,5 +1,6 @@
 import { movieCard } from "./movies.js";
 import { movies } from "./getMovies.js";
+//import { sortScreenings } from '../src/screenings.js';
 // to decide where movieCards should be appended
 const figureCard = document.querySelector("figure.movies");
 
@@ -70,3 +71,32 @@ async function showUpcomingScreenings(){
     console.log("fetched screenings:");
     console.log(screenings);
 }
+/*const fakeScreenings = [ {
+    id: 111,
+    start_time: '2025-02-13',
+    room: 'Stora salongen',
+    createdAt: '2025-01-02'
+},
+{
+    id: 112,
+    start_time: '2025-02-01',
+    room: 'Stora salongen',
+    createdAt: '2025-01-02'
+},
+{
+    id: 113,
+    start_time: '2025-02-03',
+    room: 'Stora salongen',
+    createdAt: '2025-01-02'
+},
+{
+    id: 114,
+    start_time: '2025-01-13',
+    room: 'Stora salongen',
+    createdAt: '2025-01-02'
+}
+];
+
+
+const array = sortScreenings(fakeScreenings);
+console.log(array);*/
