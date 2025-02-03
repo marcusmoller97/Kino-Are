@@ -1304,6 +1304,7 @@ article.movie .cardInfo h2, article.movie .cardInfo p {
   margin-right: auto;
 }
 
+
 #reviewForm {
   display: grid;
   grid-template-rows: auto auto auto;
@@ -1362,6 +1363,21 @@ input, select, textarea {
 #submitBtn:hover {
   background-color: gray;
   color: white;
+
+/* screenings */
+.screeningsTable {
+  background-color: #0e0e1b;
+  margin: 0.5rem 0 5rem 0;
+  padding: 2rem;
+}
+.screeningsTable h2, .screeningsTable h3 {
+  text-align: center;
+  padding: 0.5rem;
+}
+.screeningsTable ul li {
+  text-align: center;
+  list-style-type: none;
+
 }
 
 /*# sourceMappingURL=main.css.map */

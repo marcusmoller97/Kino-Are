@@ -584,6 +584,7 @@ article.movie {
    }
 }
 
+
 #reviewForm {
    display: grid;
    grid-template-rows: auto auto auto;
@@ -647,3 +648,23 @@ article.movie {
    background-color: gray;
    color: white;
  }
+
+/* screenings */
+.screeningsTable {
+   background-color: $backgroundColor;
+   margin: 0.5rem 0 5rem 0;
+
+   padding: 2rem;
+   h2, h3 {
+      text-align: center;
+      padding: 0.5rem;
+   }
+   ul {
+
+      li {
+         text-align: center;
+         list-style-type: none;
+      }
+   }
+}
+

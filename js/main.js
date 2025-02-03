@@ -4,10 +4,7 @@ import { movies } from "./getMovies.js";
 // to decide where movieCards should be appended
 const figureCard = document.querySelector("figure.movies");
 
-// create cards from all the elements in an array.
-//movieCard.createMovieCardsFromArray(array, figureCard);
-// opens movie modal box from movie card.
-//movieCard.clickEventMovieModal(array);
+
 
 // reads json file to diffrent arrays in movie objects.
 movies.getAllMovies();
@@ -28,18 +25,6 @@ findTopThreeMovies();
 document.querySelector(".allMoviesBtn").addEventListener("click", function () {
     window.location.href = "movies";
 });
-
-
-
-
-/* async function showAllMovies () {
-    console.log("In all movies");
-    const releasedArray = [];
-    const response = await fetch("content/movies.json");
-    const data = await response.json();
-    movieCard.createMovieCardsFromArray(data, figureCard);
-    movieCard.clickEventMovieModal(data);
-} */
 
 async function findTopThreeMovies () {
     const releasedArray = [];
