@@ -24,3 +24,27 @@ block content
         textarea#comment(required)
 
         button#submitBtn(type="submit") Skicka recension 
+
+    script.
+        document.getElementById("reviewForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            const movieId = "#{movie.id}"; 
+            const reviewData = {
+                name: document.getElementById("name").value,
+                rating: document.getElementById("rating").value,
+                comment: document.getElementById("comment").value,
+                movie: movieId,  
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+
+
+            fetch("/movies/review", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(reviewData)
+            })       
+        });
