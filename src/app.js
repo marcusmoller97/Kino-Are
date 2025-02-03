@@ -1,6 +1,7 @@
 import express from 'express';
 import { renderMovies, renderPage, renderMoviesPage, renderMoviePage } from '../lib/renderPage.js';
 import { errorHandler } from '../lib/middleware.js';
+import { apiRouter } from './API.js';
 
 function initApp (API) {
     const app = express();
@@ -25,8 +26,8 @@ function initApp (API) {
             renderMoviePage(res, 'movie', req.params.id);
         });
 
-
     app
+        .use(apiRouter)
         .use('/static', express.static('./static'))
         .use('/pictures', express.static('./pictures'))
         .use('/content', express.static('./content'))
