@@ -72,7 +72,11 @@ async function showUpcomingScreenings(){
     console.log(screenings);
 
     const screeningsWrapper = document.querySelector(".upcomingScreenings");
-    const screeningsListTitle = document.createElement("ul");
+
+    if(screenings.length == 0){
+        screeningsWrapper.innerHTML = "Vi har tyvärr inga visningar de kommande 5 dagarna";
+    }else{
+        const screeningsListTitle = document.createElement("ul");
     screeningsListTitle.classList.add("screeningsTitle");
     const screeningsListDate = document.createElement("ul");
     screeningsListDate.classList.add("screeningsDate");
@@ -101,17 +105,9 @@ async function showUpcomingScreenings(){
 
     screenings.forEach((screening)=>{
         const title = screening.movie.data.attributes.title;
-        //const screeningTime = screening.start_time.toString();
         const d = new Date(screening.start_time);
         const date = d.toLocaleDateString("en-GB");
         const time = d.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
-       /* const [date, time] = screening.start_time.split("T");
-        console.log(date);
-        console.log(time);*/
-
-        //const l = date.toLocaleString();
-       //const screeningTime = date.toLocaleString();
-       // const screeningTime = date.toDateString();
 
         const listItemTitle = document.createElement("li");
         listItemTitle.classList.add("screeningsListItem");
@@ -131,6 +127,8 @@ async function showUpcomingScreenings(){
         screeningsListDate.append(listItemDate);
         screeningsListTime.append(listItemTime);
     })
+    }
+    
 }
 
 

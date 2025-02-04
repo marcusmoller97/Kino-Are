@@ -111,9 +111,9 @@ export default function sortScreenings(screenings){
 }
 
 export async function fetchUpcomingScreenings(){
-    //const screenings = await getScreenings();
-   // const upcomingScreenings = sortScreenings(screenings);
-    const upcomingScreenings = sortScreenings(fakeScreenings);
+    const screenings = await getScreenings();
+    const upcomingScreenings = sortScreenings(screenings);
+   // const upcomingScreenings = sortScreenings(fakeScreenings);
     console.log("sorted screenings");
     console.log(upcomingScreenings);
     return upcomingScreenings;
