@@ -585,6 +585,28 @@ article.movie {
 }
 
 .upcomingScreenings{
+   display: grid;
+   grid-template-columns: auto auto auto 1fr;
    background-color: $backgroundColor;
    color:$textColor;
+  padding: 5rem;
+   
+   ul{
+      list-style-type: none;
+   }
+}
+
+.screeningsTitle{
+   grid-column: 1;
+   padding: 1rem;
+}
+
+.screeningsDate{
+   grid-column: 2;
+   padding: 1rem;
+}
+
+.screeningsTime{
+   grid-column: 3;
+   padding: 1rem;
 }
