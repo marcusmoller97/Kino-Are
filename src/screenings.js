@@ -1,23 +1,4 @@
-//import { getScreenings } from '/apiScreenings';
-
-const viewingsAPI = "https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie";
-
-async function getScreenings(){
-    const response = await fetch(viewingsAPI);
-    const payload = await response.json();
-    const screenings = payload.data.map(toScreeningObject);
-   //const screenings = payload.data;
-    console.log(screenings);
-    console.log(screenings[0].movie.data.attributes.title);
-    return screenings;
-}
-
-function toScreeningObject(apiObject){
-    return{
-        id: apiObject.id,
-        ...apiObject.attributes,
-    };
-}
+import getScreenings from "./apiScreenings.js";
 
 const date1 = new Date();
 date1.setDate(date1.getDate() +2);

@@ -68,8 +68,6 @@ showUpcomingScreenings();
 async function showUpcomingScreenings(){
     const response = await fetch("/api/screenings/upcomingScreenings");
     const screenings = await response.json();
-    console.log("fetched screenings:");
-    console.log(screenings);
 
     const screeningsWrapper = document.querySelector(".upcomingScreenings");
 
@@ -77,56 +75,56 @@ async function showUpcomingScreenings(){
         screeningsWrapper.innerHTML = "Vi har tyvärr inga visningar de kommande 5 dagarna";
     }else{
         const screeningsListTitle = document.createElement("ul");
-    screeningsListTitle.classList.add("screeningsTitle");
-    const screeningsListDate = document.createElement("ul");
-    screeningsListDate.classList.add("screeningsDate");
-    const screeningsListTime = document.createElement("ul");
-    screeningsListTime.classList.add("screeningsTime");
+        screeningsListTitle.classList.add("screeningsTitle");
+        const screeningsListDate = document.createElement("ul");
+        screeningsListDate.classList.add("screeningsDate");
+        const screeningsListTime = document.createElement("ul");
+        screeningsListTime.classList.add("screeningsTime");
 
-    screeningsWrapper.append(screeningsListTitle);
-    screeningsWrapper.append(screeningsListDate);
-    screeningsWrapper.append(screeningsListTime);
+        screeningsWrapper.append(screeningsListTitle);
+        screeningsWrapper.append(screeningsListDate);
+        screeningsWrapper.append(screeningsListTime);
 
-    const listTitle = document.createElement("li");
-    listTitle.classList.add("screeningsListTitle");
-    listTitle.innerHTML = "Titel: ";
+        const listTitle = document.createElement("li");
+        listTitle.classList.add("screeningsListTitle");
+        listTitle.innerHTML = "Titel: ";
 
-    const listDate = document.createElement("li");
-    listDate.classList.add("screeningsListDate");
-    listDate.innerHTML = "Datum: ";
+        const listDate = document.createElement("li");
+        listDate.classList.add("screeningsListDate");
+        listDate.innerHTML = "Datum: ";
 
-    const listTime = document.createElement("li");
-    listTime.classList.add("screeningsListTime");
-    listTime.innerHTML = "Tid: ";
+        const listTime = document.createElement("li");
+        listTime.classList.add("screeningsListTime");
+        listTime.innerHTML = "Tid: ";
 
-    screeningsListTitle.append(listTitle);
-    screeningsListDate.append(listDate)
-    screeningsListTime.append(listTime);
+        screeningsListTitle.append(listTitle);
+        screeningsListDate.append(listDate)
+        screeningsListTime.append(listTime);
 
-    screenings.forEach((screening)=>{
-        const title = screening.movie.data.attributes.title;
-        const d = new Date(screening.start_time);
-        const date = d.toLocaleDateString("en-GB");
-        const time = d.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
+        screenings.forEach((screening)=>{
+            const title = screening.movie.data.attributes.title;
+            const d = new Date(screening.start_time);
+            const date = d.toLocaleDateString("en-GB");
+            const time = d.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
 
-        const listItemTitle = document.createElement("li");
-        listItemTitle.classList.add("screeningsListItem");
-        listItemTitle.innerHTML = title;
+            const listItemTitle = document.createElement("li");
+            listItemTitle.classList.add("screeningsListItem");
+            listItemTitle.innerHTML = title;
         
 
-        const listItemDate = document.createElement("li");
-        listItemDate.classList.add("screeningsListItem");
-        listItemDate.innerHTML = date;
+            const listItemDate = document.createElement("li");
+            listItemDate.classList.add("screeningsListItem");
+            listItemDate.innerHTML = date;
        
         
-        const listItemTime = document.createElement("li");
-        listItemTime.classList.add("screeningsListItem");
-        listItemTime.innerHTML = time;
+            const listItemTime = document.createElement("li");
+            listItemTime.classList.add("screeningsListItem");
+            listItemTime.innerHTML = time;
 
-        screeningsListTitle.append(listItemTitle);
-        screeningsListDate.append(listItemDate);
-        screeningsListTime.append(listItemTime);
-    })
+            screeningsListTitle.append(listItemTitle);
+            screeningsListDate.append(listItemDate);
+            screeningsListTime.append(listItemTime);
+         })
     }
     
 }

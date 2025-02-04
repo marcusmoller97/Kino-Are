@@ -1,12 +1,13 @@
+const viewingsAPI = "https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie";
 
-
-/* export async function getScreenings(){
-    const viewingsAPI = "https://plankton-app-xhkom.ondigitalocean.app/api/screenings";
+export default async function getScreenings(){
     const response = await fetch(viewingsAPI);
     const payload = await response.json();
-    const viewings = payload.data;
-    console.log("All screenings: "+viewings);
-    return viewings;
+    const screenings = payload.data.map(toScreeningObject);
+   //const screenings = payload.data;
+    console.log(screenings);
+    console.log(screenings[0].movie.data.attributes.title);
+    return screenings;
 }
 
 function toScreeningObject(apiObject){
@@ -14,4 +15,4 @@ function toScreeningObject(apiObject){
         id: apiObject.id,
         ...apiObject.attributes,
     };
-}*/
+}
