@@ -589,7 +589,11 @@ article.movie {
    grid-template-columns: auto auto auto 1fr;
    background-color: $backgroundColor;
    color:$textColor;
-  padding: 5rem;
+   padding: 2rem 5rem 2rem 5rem;
+   margin: 1.5rem;
+   border-radius: 10px;
+   box-shadow: black 0px 0px 9px 0.01px;
+
    
    ul{
       list-style-type: none;

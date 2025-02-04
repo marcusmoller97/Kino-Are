@@ -72,17 +72,64 @@ async function showUpcomingScreenings(){
     console.log(screenings);
 
     const screeningsWrapper = document.querySelector(".upcomingScreenings");
-    const screeningsList = document.createElement("ul");
-    screeningsList.classList.add("screeningsList");
+    const screeningsListTitle = document.createElement("ul");
+    screeningsListTitle.classList.add("screeningsTitle");
+    const screeningsListDate = document.createElement("ul");
+    screeningsListDate.classList.add("screeningsDate");
+    const screeningsListTime = document.createElement("ul");
+    screeningsListTime.classList.add("screeningsTime");
 
-    screeningsWrapper.append(screeningsList);
+    screeningsWrapper.append(screeningsListTitle);
+    screeningsWrapper.append(screeningsListDate);
+    screeningsWrapper.append(screeningsListTime);
+
+    const listTitle = document.createElement("li");
+    listTitle.classList.add("screeningsListTitle");
+    listTitle.innerHTML = "Titel: ";
+
+    const listDate = document.createElement("li");
+    listDate.classList.add("screeningsListDate");
+    listDate.innerHTML = "Datum: ";
+
+    const listTime = document.createElement("li");
+    listTime.classList.add("screeningsListTime");
+    listTime.innerHTML = "Tid: ";
+
+    screeningsListTitle.append(listTitle);
+    screeningsListDate.append(listDate)
+    screeningsListTime.append(listTime);
+
     screenings.forEach((screening)=>{
-        const date = screening.start_time.toString();
-        const screeningTime = date.toDateString();
-        const listItem = document.createElement("li");
-        listItem.classList.add("screeningsListItem");
-        listItem.innerHTML = screening.movie.data.attributes.title + " "+ screeningTime;
-        screeningsWrapper.append(listItem);
+        const title = screening.movie.data.attributes.title;
+        //const screeningTime = screening.start_time.toString();
+        const d = new Date(screening.start_time);
+        const date = d.toLocaleDateString("en-GB");
+        const time = d.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
+       /* const [date, time] = screening.start_time.split("T");
+        console.log(date);
+        console.log(time);*/
+
+        //const l = date.toLocaleString();
+       //const screeningTime = date.toLocaleString();
+       // const screeningTime = date.toDateString();
+
+        const listItemTitle = document.createElement("li");
+        listItemTitle.classList.add("screeningsListItem");
+        listItemTitle.innerHTML = title;
+        
+
+        const listItemDate = document.createElement("li");
+        listItemDate.classList.add("screeningsListItem");
+        listItemDate.innerHTML = date;
+       
+        
+        const listItemTime = document.createElement("li");
+        listItemTime.classList.add("screeningsListItem");
+        listItemTime.innerHTML = time;
+
+        screeningsListTitle.append(listItemTitle);
+        screeningsListDate.append(listItemDate);
+        screeningsListTime.append(listItemTime);
     })
 }
 
