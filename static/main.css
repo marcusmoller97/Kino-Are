@@ -1281,7 +1281,8 @@ article.movie .cardInfo {
   flex-shrink: 0;
   padding: 2rem;
 }
-article.movie .cardInfo h2, article.movie .cardInfo p {
+article.movie .cardInfo h2,
+article.movie .cardInfo p {
   padding-top: 0.5rem;
 }
 
@@ -1302,6 +1303,87 @@ article.movie .cardInfo h2, article.movie .cardInfo p {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+#reviewForm {
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 2rem;
+  background-color: black;
+  color: white;
+  margin: 2rem auto;
+  max-width: fit-content;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+input, select, textarea {
+  color: black;
+  background-color: white;
+  border: 1px solid gray;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+#name {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#rating {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+#comment {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+#submitBtn {
+  grid-column: 3;
+  grid-row: 3;
+  background-color: white;
+  color: black;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+#submitBtn:hover {
+  background-color: gray;
+  color: white;
+}
+
+/* screenings */
+.screeningsTable {
+  background-color: #0e0e1b;
+  margin: 0.5rem 0 5rem 0;
+  padding: 2rem;
+}
+.screeningsTable h2,
+.screeningsTable h3 {
+  text-align: center;
+  padding: 0.5rem;
+}
+.screeningsTable ul li {
+  text-align: center;
+  list-style-type: none;
+}
+
+/* form moviePage */
+.movieRating {
+  background-color: #0e0e1b;
 }
 
 .upcomingScreenings {

@@ -8,8 +8,7 @@
     "sass:compile": "sass src/sections/main.scss ./static/main.css",
     "sass:watch": "sass --watch src/sections/main.scss ./static/main.css",
     "test:jest": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
-    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js __tests__/express-test/movies.test.js",
-    "test:screenings": "node --experimental-vm-modules node_modules/jest/bin/jest.js __tests__/express-test/screenings.test.js", 
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js __tests__/express-test",
     "dev": "npx pm2-dev server.js",
     "start:pm2": "npx pm2 start server.js",
     "stop:pm2": "npx pm2 stop server",
@@ -32,6 +31,7 @@
     "express": "^4.21.2",
     "marked": "^15.0.6",
     "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.9",
     "pug": "^3.0.3"
   }
 }
