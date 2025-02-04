@@ -2,7 +2,6 @@ import express from 'express';
 import {
   renderMovies,
   renderPage,
-  renderMoviesPage,
   renderMoviePage,
 } from '../lib/renderPage.js';
 import { errorHandler } from '../lib/middleware.js';
@@ -29,33 +28,8 @@ function initApp(API) {
       renderMoviePage(res, 'movie', req.params.id);
     });
 
-  app.use(express.json());
-
-  app.post('/movies/review', async (req, res) => {
-    const reviewData = req.body;
-    console.log('Mottagen data:', req.body);
-
-    try {
-      const response = await fetch(
-        'https://plankton-app-xhkom.ondigitalocean.app/api/reviews',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(reviewData),
-        }
-      );
-
-      const data = await response.json();
-      res.status(200).json(data);
-    } catch (error) {
-      console.error('Error sending review:', error);
-      res.status(500).json({ message: 'Failed to submit review' });
-    }
-  });
-
   app
+    .use(express.json())
     .use(apiRouter)
     .use('/static', express.static('./static'))
     .use('/pictures', express.static('./pictures'))
