@@ -7,7 +7,7 @@ block content
             .cardInfo
                 h2.moviesName #{movie.attributes.title}
                 .moviesDes!= movie.attributes.intro
-
+                br
                 .movieRating
                 h3 rating: 
-                span#movieRating rating loading...
+                span#movieRating #{rating}

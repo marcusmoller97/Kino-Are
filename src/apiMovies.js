@@ -2,14 +2,14 @@ import fetch from 'node-fetch';
 
 const API_BASE = 'https://plankton-app-xhkom.ondigitalocean.app/api';
 
-export async function loadMovies () {
+export async function loadMovies() {
     const res = await fetch(API_BASE + '/movies');
 
     const payload = await res.json();
     return payload.data;
 }
 
-export async function loadMovie (id) {
+export async function loadMovie(id) {
     const res = await fetch(API_BASE + '/movies/' + id);
 
     const payload = await res.json();
@@ -17,39 +17,27 @@ export async function loadMovie (id) {
 }
 
 // Function to fetch reviews for a movie
-export async function loadMovieReviews(movieId, page = 1, pageSize = 5) {
-    try {
-        const url = `${API_BASE}/reviews?filters[movie]=${movieId}&pagination[page]=${page}&pagination[pageSize]=${pageSize}`;
-        const res = await fetch(url);
-        const payload = await res.json();
-        return payload.data || [];
-    } catch (error) {
-        console.error("Error fetching reviews:", error);
-        return [];
-    }
-}
+export async function loadMovieReviews(movieId) {
+    const url = `${API_BASE}/reviews?filters[movie]=${movieId}`;
+    const res = await fetch(url);
+    const payload = await res.json();
 
-// Rating
-export async function getAverageRating(movieId) {
-    try {
-        const reviews = await loadMovieReviews(movieId);
-        if (reviews.length === 0) return "No ratings available";
-
-        const ratings = reviews
-            .map(review => review.attributes.rating)
-            .filter(rating => rating > 0);
-
-        if (ratings.length === 0) return "No valid ratings available";
+    if (payload.data.length > 0) {
+        // Extract ratings from the review objects
+        const ratings = payload.data.map(review => review.attributes.rating);
 
         // Calculate the average rating
-        const average = ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length;
+        const totalRating = ratings.reduce((sum, rating) => sum + rating, 0);
+        const avgRating = (totalRating / ratings.length).toFixed(2); 
 
-        return average.toFixed(1); 
-    } catch (error) {
-        console.error("Error calculating average rating:", error);
-        return "Error fetching rating";
+        return avgRating;
     }
+
+    return "No ratings yet";
 }
+
+
+
 
 
 
