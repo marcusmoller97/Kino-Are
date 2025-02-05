@@ -67,8 +67,6 @@ describe('Tests that fetchReviews is working', () => {
     const validReviews = reviewUtils.fetchValidReviews();
 
     expect(validReviews).toHaveLength(2);
-
-    console.log(validReviews);
   });
 
   it('should be able to handle fetch errors', async () => {
@@ -114,8 +112,6 @@ describe('Tests that fetchReviews is working', () => {
 
     // Call function under test
     const recentReviews = reviewUtils.fetchRecentReviews(mockReviews);
-
-    console.log('Filtered Recent Reviews:', recentReviews);
 
     expect(recentReviews).toHaveLength(2);
 
@@ -218,11 +214,6 @@ describe('Tests that fetchReviews is working', () => {
     const top5Movies = reviewUtils.getTop5Movies(mockRecentReviews);
 
     expect(top5Movies).toHaveLength(5);
-
-    top5Movies.forEach((item) => {
-      console.log(item);
-    });
-
     expect(top5Movies[0].id).toBe(2);
     expect(top5Movies[1].id).toBe(5);
     expect(top5Movies[2].id).toBe(1);

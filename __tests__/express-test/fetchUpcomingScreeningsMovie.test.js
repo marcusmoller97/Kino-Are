@@ -4,6 +4,9 @@ import { fetchScreeningsMovie, upcomingScreenings } from '../../src/fetchScreeni
 
 
 describe("Tests that upcomingScreenings function is working", () => {
+    // to handle date in fake api.
+    let date = new Date();
+    date.setUTCDate(date.getUTCDate() + 15)
     it('should return empty array when date is older than todays date', async () => {
         const fakeApi = {
             "data": [
@@ -67,7 +70,7 @@ describe("Tests that upcomingScreenings function is working", () => {
                 {
                     "id": 295,
                     "attributes": {
-                        "start_time": "2025-02-13T17:00:00.000Z",
+                        "start_time": date,
                         "room": "Stora salongen",
                         "createdAt": "2025-01-29T14:19:16.064Z",
                         "updatedAt": "2025-01-29T14:19:16.064Z",
@@ -147,7 +150,7 @@ describe("Tests that upcomingScreenings function is working", () => {
                 {
                     "id": 295,
                     "attributes": {
-                        "start_time": "2025-02-14T17:00:00.000Z",
+                        "start_time": date,
                         "room": "Stora salongen",
                         "createdAt": "2025-01-29T14:19:16.064Z",
                         "updatedAt": "2025-01-29T14:19:16.064Z",
@@ -172,7 +175,7 @@ describe("Tests that upcomingScreenings function is working", () => {
                 {
                     "id": 296,
                     "attributes": {
-                        "start_time": "2025-02-13T17:00:00.000Z",
+                        "start_time": "2026-02-13T17:00:00.000Z",
                         "room": "Stora salongen",
                         "createdAt": "2025-01-29T14:19:16.064Z",
                         "updatedAt": "2025-01-29T14:19:16.064Z",
@@ -197,7 +200,7 @@ describe("Tests that upcomingScreenings function is working", () => {
                 {
                     "id": 297,
                     "attributes": {
-                        "start_time": "2025-02-17T17:00:00.000Z",
+                        "start_time": "2026-02-17T17:00:00.000Z",
                         "room": "Stora salongen",
                         "createdAt": "2025-01-29T14:20:16.064Z",
                         "updatedAt": "2025-01-29T14:20:16.064Z",
