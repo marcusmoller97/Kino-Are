@@ -1388,7 +1388,7 @@ input, select, textarea {
 
 .upcomingScreenings {
   display: grid;
-  grid-template-columns: auto auto auto 1fr;
+  grid-template-columns: auto auto auto auto 1fr;
   background-color: #0e0e1b;
   color: #ffffff;
   padding: 2rem 5rem 2rem 5rem;
@@ -1412,6 +1412,11 @@ input, select, textarea {
 
 .screeningsTime {
   grid-column: 3;
+  padding: 1rem;
+}
+
+.screeningsRoom {
+  grid-column: 4;
   padding: 1rem;
 }
 
