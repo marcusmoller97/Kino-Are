@@ -8,9 +8,11 @@ block content
             .cardInfo
                 h2.moviesName #{movie.attributes.title}
                 .moviesDes!= movie.attributes.intro
-             .cardInfo
-                h2.moviesName #{movie.attributes.title}
-                .moviesDes!= movie.attributes.intro
+
+    hr
+    section.screeningsTable 
+        h2 Upcoming screenings
+
 
     form#reviewForm
         label(for="name") Ditt namn: 
@@ -63,9 +65,4 @@ block content
                 alert("Fel vid skickande av recension.");  
             });
         });
-
-       
-    hr
-    section.screeningsTable 
-        h2 Upcoming screenings
 

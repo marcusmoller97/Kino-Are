@@ -40,7 +40,7 @@
   z-index: 1000;
 }
 .header .nav-title-container .navbar-container a {
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   color: black;
   text-decoration: none;
   font-weight: bold;
@@ -52,7 +52,7 @@
   color: white;
 }
 .header .nav-title-container .navbar-container a::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: -1px;
@@ -112,7 +112,7 @@
   border-radius: 0px 5px 5px 0px;
   background-color: rgb(205, 205, 205);
   color: black;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-weight: bold;
   cursor: pointer;
   animation: roundBorderBtn both;
@@ -166,7 +166,7 @@
 .scrollingSections h1 {
   margin: 40px 0px;
   place-self: center;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   user-select: none;
   color: white;
 }
@@ -180,13 +180,7 @@
   margin-inline: auto;
   position: relative;
   overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    rgb(0, 0, 0) 3%,
-    rgb(0, 0, 0) 97%,
-    rgba(0, 0, 0, 0)
-  );
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(0, 0, 0) 3%, rgb(0, 0, 0) 97%, rgba(0, 0, 0, 0));
 }
 .scrollingSections .picsListDown .pics {
   left: max(1350px, 100%);
@@ -232,13 +226,7 @@
   margin-inline: auto;
   position: relative;
   overflow: hidden;
-  mask-image: linear-gradient(
-    to right,
-    rgba(0, 0, 0, 0),
-    rgb(0, 0, 0) 3%,
-    rgb(0, 0, 0) 97%,
-    rgba(0, 0, 0, 0)
-  );
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgb(0, 0, 0) 3%, rgb(0, 0, 0) 97%, rgba(0, 0, 0, 0));
 }
 .scrollingSections .picsListUp .pic {
   right: max(1350px, 100%);
@@ -329,7 +317,7 @@
   margin-top: 10px;
 }
 .filterSection .filterMenu .tagsContainer .tags {
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   padding: 10px 20px;
   border-radius: 20px;
   border: none;
@@ -377,7 +365,7 @@
   place-self: center;
   border-radius: 9px;
   border: none;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-weight: bold;
   cursor: pointer;
   box-shadow: black 0px 0px 6px 0.3px;
@@ -424,12 +412,12 @@
 }
 .moviesSection .cardContainer .movieCard .cardInfo .moviesName {
   color: white;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   place-self: center;
 }
 .moviesSection .cardContainer .movieCard .cardInfo .moviesDes {
   color: white;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -440,7 +428,7 @@
   padding: 10px 20px;
   border: none;
   border-radius: 10px;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-weight: bold;
   cursor: pointer;
   background-color: #2d7dfe;
@@ -461,7 +449,7 @@
 }
 .footer .containerLeft h1,
 .footer .containerLeft p {
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   padding: 10px 0px;
   font-size: large;
 }
@@ -471,7 +459,7 @@
 }
 .footer .containerMid h1,
 .footer .containerMid p {
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   padding: 10px 0px;
   font-size: large;
 }
@@ -481,7 +469,7 @@
 }
 .footer .containerRight h1,
 .footer .containerRight p {
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   padding: 10px 0px;
   font-size: large;
 }
@@ -663,8 +651,7 @@ textarea {
  * 1. Show the overflow in Edge.
  */
 button,
-input {
-  /* 1 */
+input { /* 1 */
   overflow: visible;
 }
 
@@ -673,8 +660,7 @@ input {
  * 1. Remove the inheritance of text transform in Firefox.
  */
 button,
-select {
-  /* 1 */
+select { /* 1 */
   text-transform: none;
 }
 
@@ -682,9 +668,9 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type=button],
+[type=reset],
+[type=submit] {
   -webkit-appearance: button;
 }
 
@@ -692,9 +678,9 @@ button,
  * Remove the inner border and padding in Firefox.
  */
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
@@ -703,9 +689,9 @@ button::-moz-focus-inner,
  * Restore the focus styles unset by the previous rule.
  */
 button:-moz-focusring,
-[type='button']:-moz-focusring,
-[type='reset']:-moz-focusring,
-[type='submit']:-moz-focusring {
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
   outline: 1px dotted ButtonText;
 }
 
@@ -749,8 +735,8 @@ textarea {
  * 1. Add the correct box sizing in IE 10.
  * 2. Remove the padding in IE 10.
  */
-[type='checkbox'],
-[type='radio'] {
+[type=checkbox],
+[type=radio] {
   box-sizing: border-box; /* 1 */
   padding: 0; /* 2 */
 }
@@ -758,8 +744,8 @@ textarea {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -767,7 +753,7 @@ textarea {
  * 1. Correct the odd appearance in Chrome and Safari.
  * 2. Correct the outline style in Safari.
  */
-[type='search'] {
+[type=search] {
   -webkit-appearance: textfield; /* 1 */
   outline-offset: -2px; /* 2 */
 }
@@ -775,7 +761,7 @@ textarea {
 /**
  * Remove the inner padding in Chrome and Safari on macOS.
  */
-[type='search']::-webkit-search-decoration {
+[type=search]::-webkit-search-decoration {
   -webkit-appearance: none;
 }
 
@@ -824,7 +810,7 @@ template {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
-  font-family: 'Roboto', serif;
+  font-family: "Roboto", serif;
   color: #ffffff;
 }
 
@@ -890,7 +876,7 @@ header .cinemaSeats .picUnderNav {
 * {
   margin: 0px;
   padding: 0px;
-  font-family: 'Roboto', serif;
+  font-family: "Roboto", serif;
 }
 
 .skiReviewerSection {
@@ -1257,7 +1243,7 @@ footer .footerPrivacyPolicyLink {
   margin: 10px;
   border: none;
   border-radius: 10px;
-  font-family: 'Work Sans', sans-serif;
+  font-family: "Work Sans", sans-serif;
   font-weight: bold;
   cursor: pointer;
   background-color: #2d7dfe;
@@ -1319,7 +1305,6 @@ article.movie .cardInfo p {
   margin-right: auto;
 }
 
-
 #reviewForm {
   display: grid;
   grid-template-rows: auto auto auto;
@@ -1378,6 +1363,7 @@ input, select, textarea {
 #submitBtn:hover {
   background-color: gray;
   color: white;
+}
 
 /* screenings */
 .screeningsTable {
@@ -1393,7 +1379,6 @@ input, select, textarea {
 .screeningsTable ul li {
   text-align: center;
   list-style-type: none;
-
 }
 
 /* form moviePage */
