@@ -9,37 +9,37 @@ block content
                 h2.moviesName #{movie.attributes.title}
                 .moviesDes!= movie.attributes.intro
     hr
-    section.screeningsTable 
+    section.screeningsTable
         h2 Upcoming screenings
 
     form#reviewForm
-        label(for="name") Ditt namn: 
+        label(for="name") Ditt namn:
         input#name(type="text" required)
 
-        label(for="rating") Betyg: 
+        label(for="rating") Betyg:
         select#rating
             option(value="1") 1
             option(value="2") 2
             option(value="3") 3
             option(value="4") 4
             option(value="5") 5
-        
-        label(for="comment") Kommentar: 
+
+        label(for="comment") Kommentar:
         textarea#comment(required)
 
-        button#submitBtn(type="submit") Skicka recension 
+        button#submitBtn(type="submit") Skicka recension
 
     script.
         document.getElementById("reviewForm").addEventListener("submit", function(event) {
-            event.preventDefault(); 
+            event.preventDefault();
 
-            const movieId = "#{movie.id}"; 
+            const movieId = "#{movie.id}";
             const reviewData = {
                 data: {
                     name: document.getElementById("name").value,
                     rating: document.getElementById("rating").value,
                     comment: document.getElementById("comment").value,
-                    movie: movieId,  
+                    movie: movieId,
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString()
                 }
@@ -60,10 +60,15 @@ block content
             })
             .catch(error => {
                 console.error("Fel vid skickande av recension:", error);
-                alert("Fel vid skickande av recension.");  
+                alert("Fel vid skickande av recension.");
             });
         });
 
         .cardInfo
             h2.moviesName #{movie.attributes.title}
             .moviesDes!= movie.attributes.intro
+    section.revSection(data-movie-id=movie.id)
+        h2 Recensioner
+        .revPages
+    //-----Content loads dynamicly from .js-----
+    script(src="/js/GetReview.js")

@@ -4,6 +4,7 @@ $backgroundColor: #0e0e1b;
 $buttonColor: #175dcc;
 $textColor: #ffffff;
 @use 'normalize';
+@use "reviewGet.scss";
 
 * {
   margin: 0px;
@@ -595,39 +596,39 @@ article.movie {
    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
    text-align: center;
  }
- 
+
  label {
    font-size: 1rem;
    font-weight: bold;
  }
- 
+
  input, select, textarea {
-   color: black;  
-   background-color: white;  
+   color: black;
+   background-color: white;
    border: 1px solid gray;
    padding: 0.5rem;
    border-radius: 5px;
  }
- 
- 
- 
+
+
+
  #name {
    grid-column: 1;
    grid-row: 2;
  }
- 
+
  #rating {
    grid-column: 2;
    grid-row: 2;
 
  }
- 
+
  #comment {
    grid-column: 3;
    grid-row: 2;
 
  }
- 
+
  #submitBtn {
    grid-column: 3;
    grid-row: 3;
@@ -640,7 +641,7 @@ article.movie {
    font-weight: bold;
    transition: background 0.3s;
  }
- 
+
  #submitBtn:hover {
    background-color: gray;
    color: white;
@@ -680,7 +681,7 @@ article.movie {
   border-radius: 10px;
   box-shadow: black 0px 0px 9px 0.01px;
 
-  
+
   ul{
      list-style-type: none;
   }

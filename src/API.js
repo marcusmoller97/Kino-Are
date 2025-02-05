@@ -31,6 +31,33 @@ router
       res.status(500);
     }
   })
+  //-----------cms endpoint------------
+  .get("/movies/:movieId/reviews", async (req, res) => {
+		try {
+			const { movieId } = req.params;
+			const { page = 1, pageSize = 5 } = req.query;
+
+			//--------filters with cms compatible------
+			const cmsUrl = new URL(
+				"https://plankton-app-xhkom.ondigitalocean.app/api/reviews"
+			);
+			cmsUrl.searchParams.append("filters[movie][id][$eq]", movieId);
+			cmsUrl.searchParams.append("pagination[page]", page);
+			cmsUrl.searchParams.append("pagination[pageSize]", pageSize);
+			cmsUrl.searchParams.append("populate", "movie");
+
+			console.log("CMS URL--->", cmsUrl.toString());
+
+			const response = await fetch(cmsUrl);
+			if (!response.ok) throw new Error("Shitt! cms api error");
+			const data = await response.json();
+			res.json(data);
+			console.log(data);
+		} catch (error) {
+			console.error("Server Error:", error);
+			res.status(500).json({ error: error.message });
+		}
+	})
   .post('/movies/review', async (req, res) => {
     const reviewData = req.body;
     console.log("Mottagen data:", req.body);
