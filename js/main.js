@@ -139,16 +139,39 @@ function displayUpcomingScreenings(screenings, screeningsWrapper){
         const title = screening.movie.data.attributes.title;
         const room = screening.room;
         const d = new Date(screening.start_time);
-        const date = d.toLocaleDateString("en-GB");
+        const date = d.toLocaleDateString("sv-Se", {day:"numeric", month: "long"});
         const time = d.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
-
+        let day;
+        switch(d.getDay()){
+            case 0:
+                day="Söndag";
+                break;
+            case 1:
+                day="Måndag";
+                break;
+            case 2:
+                day="Tisdag";
+                break;
+            case 3:
+                day="Onsdag";
+                break;
+            case 4:
+                day="Torsdag";
+                break;
+            case 5:
+                day="Fredag";
+                break;
+            case 6:
+                day="Lördag";
+                break;
+        }
         const listItemTitle = document.createElement("li");
         listItemTitle.classList.add("screeningsListItem");
         listItemTitle.innerHTML = title;
 
         const listItemDate = document.createElement("li");
         listItemDate.classList.add("screeningsListItem");
-        listItemDate.innerHTML = date;
+        listItemDate.innerHTML = day + " "+date;
     
         const listItemTime = document.createElement("li");
         listItemTime.classList.add("screeningsListItem");
