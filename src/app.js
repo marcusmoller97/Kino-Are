@@ -26,7 +26,7 @@ function initApp(API) {
     })
     .get('/movies/:id', async (req, res) => {
       renderMoviePage(res, 'movie', req.params.id);
-    });
+        })
 
   app
     .use(express.json())
