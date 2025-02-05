@@ -197,7 +197,7 @@ describe("Tests that upcomingScreenings function is working", () => {
                 {
                     "id": 297,
                     "attributes": {
-                        "start_time": "2025-02-05T17:00:00.000Z",
+                        "start_time": "2025-02-17T17:00:00.000Z",
                         "room": "Stora salongen",
                         "createdAt": "2025-01-29T14:20:16.064Z",
                         "updatedAt": "2025-01-29T14:20:16.064Z",
