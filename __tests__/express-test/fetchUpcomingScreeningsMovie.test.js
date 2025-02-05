@@ -4,10 +4,6 @@ import { fetchScreeningsMovie, upcomingScreenings } from '../../src/fetchScreeni
 
 
 describe("Tests that upcomingScreenings function is working", () => {
-    // to handle date in fake api.
-    /* let date = new Date();
-    date.setUTCDate(date.getUTCDate() + 15) */
-
     let dates = [];
     let currentDate = new Date();
 
