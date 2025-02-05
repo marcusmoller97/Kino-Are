@@ -1,5 +1,4 @@
 import express from 'express';
-import { fetchUpcomingScreenings } from './screenings.js';
 import {
   renderMovies,
   renderPage,
@@ -28,13 +27,6 @@ function initApp(API) {
     .get('/movies/:id', async (req, res) => {
       renderMoviePage(res, 'movie', req.params.id);
         })
-        .get('/api/screenings/upcomingScreenings', async (req, res) => {
-            console.log("In app.js");
-            const screenings = await fetchUpcomingScreenings();
-            //console.log(screenings);
-            res.send(screenings);
-
-    });
 
   app
     .use(express.json())

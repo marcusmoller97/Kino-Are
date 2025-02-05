@@ -1,5 +1,6 @@
 import express from 'express';
 import { upcomingScreenings, fetchScreeningsMovie } from './fetchScreening.js';
+import { fetchUpcomingScreenings } from './screenings.js';
 import reviewUtils from './reviewUtils.js';
 
 const router = express();
@@ -49,6 +50,11 @@ router
       console.error('Error sending review:', error);
       res.status(500).json({ message: 'Failed to submit review' });
     }
+  })
+  .get('/screenings/upcoming', async (req, res) => {
+    console.log("In app.js");
+    const screenings = await fetchUpcomingScreenings();
+    res.send(screenings);
   });
 
 export { router as apiRouter };

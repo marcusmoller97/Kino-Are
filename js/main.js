@@ -87,7 +87,7 @@ addEventListener('DOMContentLoaded', async () => {
 showUpcomingScreenings();
 
 async function showUpcomingScreenings(){
-    const response = await fetch("/api/screenings/upcomingScreenings");
+    const response = await fetch("/screenings/upcoming");
     const screenings = await response.json();
 
     const screeningsWrapper = document.querySelector(".upcomingScreenings");
