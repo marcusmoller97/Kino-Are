@@ -61,7 +61,6 @@ router
 			}
 			res.json(data);
 		} catch (error) {
-			console.error("Server Error:", error);
 			res.status(500).json({ error: error.message });
 		}
 	})
