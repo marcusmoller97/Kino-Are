@@ -67,7 +67,7 @@ describe('Tests that the fetchScreeningsMovie can handle diffrent calls from api
     const screenings = await fetchScreeningsMovie(9);
 
     expect(fetch).toHaveBeenCalledWith(
-      'https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie&filters[movie]=9'
+      'https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie&filters[movie]=9&pagination[pageSize]=1000'
     );
 
     expect(screenings).toHaveLength(1);
@@ -175,7 +175,7 @@ describe('Tests that the fetchScreeningsMovie can handle diffrent calls from api
     const screenings = await fetchScreeningsMovie(9);
 
     expect(fetch).toHaveBeenCalledWith(
-      'https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie&filters[movie]=9'
+      'https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie&filters[movie]=9&pagination[pageSize]=1000'
     );
 
     expect(screenings).toHaveLength(3);
@@ -205,7 +205,7 @@ describe('Tests that the fetchScreeningsMovie can handle diffrent calls from api
     const screenings = await fetchScreeningsMovie(id);
 
     expect(fetch).toHaveBeenCalledWith(
-      `https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie&filters[movie]=${id}`
+      `https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie&filters[movie]=${id}&pagination[pageSize]=1000`
     );
     expect(screenings).toHaveLength(0);
   });
@@ -223,7 +223,7 @@ describe('Tests that the fetchScreeningsMovie can handle diffrent calls from api
     const screening = await fetchScreeningsMovie(id);
 
     expect(fetch).toHaveBeenCalledWith(
-      `https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie&filters[movie]=${id}`
+      `https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie&filters[movie]=${id}&pagination[pageSize]=1000`
     );
     expect(screening).toBeUndefined();
   });
