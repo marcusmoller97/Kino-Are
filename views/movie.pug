@@ -61,11 +61,10 @@ block content
             })
             .catch(error => {
                 console.error("Fel vid skickande av recension:", error);
-
-                alert("Fel vid skickande av recension.");
             });
         });
-        .cardInfo
-            h2.moviesName #{movie.attributes.title}
-            .moviesDes!= movie.attributes.intro
-
+    section.revSection(data-movie-id=movie.id)
+        h2 Recensioner
+        .revPages
+    //-----Content loads dynamicly from .js-----
+    script(src="/js/GetReview.js")

@@ -24,19 +24,39 @@ document.addEventListener("DOMContentLoaded", () => {
 	//-----------custom endpoint instead of cms---------
 	async function fetchRev(page = 1) {
 		try {
-			const response = await fetch(
-				`/api/movies/${movieId}/reviews?page=${page}&pageSize=5`
-			);
+			const response = await fetch(`/api/movies/${movieId}/reviews?page=${page}&pageSize=5`);
+
+			if (!response.ok) {
+				throw new Error(`Failed to load reviews: ${response.statusText}`);
+			}
+
 			const result = await response.json();
+
+			if (result.message) {
+				//--if endpoint return no rev fuound--
+				displayNoReviewsMessage();
+				return;
+			}
+
 			totalPages = result.meta?.pagination?.pageCount || 1;
 			currentPage = result.meta?.pagination?.page || 1;
 
 			createRevPage(result.data);
-			console.log(result.data);
 			updateControls();
 		} catch (error) {
-			console.error("rev.JS shitt. Error fetching reviews:", error);
+			console.error("Error fetching reviews:", error);
+			displayErrorMessage();
 		}
+	}
+
+	function displayNoReviewsMessage() {
+		const container = document.querySelector(".revPages");
+		container.innerHTML = `<p class="no-reviews">No reviews yet. Be the first to review!</p>`;
+	}
+
+	function displayErrorMessage() {
+		const container = document.querySelector(".revPages");
+		container.innerHTML = `<p class="error-message">Failed to load reviews.try again later.</p>`;
 	}
 
 	function createRevPage(reviews) {
