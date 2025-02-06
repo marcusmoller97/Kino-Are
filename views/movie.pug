@@ -58,11 +58,9 @@ block content
             .then(response => response.json())
             .then(data => {
                  console.log("Recension skickad:", data);
-                 alert("Recension skickad!");
             })
             .catch(error => {
                 console.error("Fel vid skickande av recension:", error);
-                alert("Fel vid skickande av recension.");  
             });
         });
 
