@@ -1,52 +1,54 @@
 import express from 'express';
-import { renderMovies, renderPage, renderMoviesPage, renderMoviePage } from '../lib/renderPage.js';
+import {
+  renderMovies,
+  renderPage,
+  renderMoviePage,
+} from '../lib/renderPage.js';
 import { errorHandler } from '../lib/middleware.js';
-import { loadMovieRatings } from '../src/ratings.js';
+import { apiRouter } from './API.js';
 
-function initApp (API) {
-    const app = express();
+function initApp(API) {
+  const app = express();
 
-    app
-        .set('view engine', 'pug')
-        .set('views', 'views');
+  app.set('view engine', 'pug').set('views', 'views');
 
-    app
-        .get('/', (_req, res) => {
-            renderPage(res, 'home');
+  app
+    .get('/', (_req, res) => {
+      renderPage(res, 'home');
+    })
+    .get('/home', (_req, res) => {
+      renderPage(res, 'home');
+    })
+    .get('/movies', async (_req, res) => {
+      /* renderMoviesPage(res, 'movies'); */ //without sending param API
+      const movies = await API;
+      renderMovies(res, 'movies', movies);
+    })
+    .get('/movies/:id', async (req, res) => {
+      renderMoviePage(res, 'movie', req.params.id);
         })
-        .get('/home', (_req, res) => {
-            renderPage(res, 'home');
-        })
-        .get('/movies', async (_req, res) => {
-            /* renderMoviesPage(res, 'movies'); */ //without sending param API
-            const movies = await API;
-            renderMovies(res, 'movies', movies);
-        })
-        .get('/movies/:id', async (req, res) => {
-            renderMoviePage(res, 'movie', req.params.id);
-        });
-        /*.get('/movies/:id/rating', async (req, res) => {
+    /*.get('/movies/:id/rating', async (req, res) => {
             const rating = await loadMovieRatings(req.params.id);
             res.json({ movieId: req.params.id, rating });
         });*/
 
+  app
+    .use(express.json())
+    .use(apiRouter)
+    .use('/static', express.static('./static'))
+    .use('/pictures', express.static('./pictures'))
+    .use('/content', express.static('./content'))
+    .use('/js', express.static('./js'));
 
-    app
-        .use('/static', express.static('./static'))
-        .use('/pictures', express.static('./pictures'))
-        .use('/content', express.static('./content'))
-        .use('/js', express.static('./js'));
+  app.all('*', (_req, res) => {
+    res.status(404);
+    const status = res.statusCode;
+    res.render('404', { status });
+  });
 
+  app.use(errorHandler);
 
-    app.all('*', (_req, res) => {
-        res.status(404);
-        const status = res.statusCode;
-        res.render("404", { status });
-    });
-
-    app.use(errorHandler);
-
-    return app;
+  return app;
 }
 
 export default initApp;

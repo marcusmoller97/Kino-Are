@@ -8,7 +8,62 @@ block content
             .cardInfo
                 h2.moviesName #{movie.attributes.title}
                 .moviesDes!= movie.attributes.intro
-                br
+                 br
                 .movieRating
                 h3 rating: 
                 span#movieRating #{rating}
+
+    hr
+    section.screeningsTable 
+        h2 Upcoming screenings
+
+
+    form#reviewForm
+        label(for="name") Ditt namn: 
+        input#name(type="text" required)
+
+        label(for="rating") Betyg: 
+        select#rating
+            option(value="1") 1
+            option(value="2") 2
+            option(value="3") 3
+            option(value="4") 4
+            option(value="5") 5
+        
+        label(for="comment") Kommentar: 
+        textarea#comment(required)
+
+        button#submitBtn(type="submit") Skicka recension 
+
+    script.
+        document.getElementById("reviewForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            const movieId = "#{movie.id}"; 
+            const reviewData = {
+                data: {
+                    name: document.getElementById("name").value,
+                    rating: document.getElementById("rating").value,
+                    comment: document.getElementById("comment").value,
+                    movie: movieId,  
+                    createdAt: new Date().toISOString(),
+                    updatedAt: new Date().toISOString()
+                }
+            };
+
+
+            fetch("/movies/review", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(reviewData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                 console.log("Recension skickad:", data);
+            })
+            .catch(error => {
+                console.error("Fel vid skickande av recension:", error);
+            });
+        });
