@@ -8,9 +8,11 @@ block content
             .cardInfo
                 h2.moviesName #{movie.attributes.title}
                 .moviesDes!= movie.attributes.intro
+
     hr
     section.screeningsTable 
         h2 Upcoming screenings
+
 
     form#reviewForm
         label(for="name") Ditt namn: 
@@ -56,14 +58,9 @@ block content
             .then(response => response.json())
             .then(data => {
                  console.log("Recension skickad:", data);
-                 alert("Recension skickad!");
             })
             .catch(error => {
                 console.error("Fel vid skickande av recension:", error);
-                alert("Fel vid skickande av recension.");  
             });
         });
 
-        .cardInfo
-            h2.moviesName #{movie.attributes.title}
-            .moviesDes!= movie.attributes.intro
