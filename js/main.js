@@ -83,3 +83,108 @@ addEventListener('DOMContentLoaded', async () => {
     console.error('Error fetching: ', error);
   }
 });
+
+showUpcomingScreenings();
+
+async function showUpcomingScreenings(){
+    const response = await fetch("/screenings/upcoming");
+    const screenings = await response.json();
+
+    const screeningsWrapper = document.querySelector(".upcomingScreenings");
+
+    if(screenings.length == 0){
+        screeningsWrapper.innerHTML = "Vi har tyvärr inga visningar de kommande 5 dagarna";
+    }else{
+     displayUpcomingScreenings(screenings, screeningsWrapper);
+    
+}
+
+function displayUpcomingScreenings(screenings, screeningsWrapper){
+    const screeningsListTitle = document.createElement("ul");
+    screeningsListTitle.classList.add("screeningsTitle");
+    const screeningsListDate = document.createElement("ul");
+    screeningsListDate.classList.add("screeningsDate");
+    const screeningsListTime = document.createElement("ul");
+    screeningsListTime.classList.add("screeningsTime");
+    const screeningsListRoom = document.createElement("ul");
+    screeningsListRoom.classList.add("screeningsRoom");
+
+    screeningsWrapper.append(screeningsListTitle);
+    screeningsWrapper.append(screeningsListDate);
+    screeningsWrapper.append(screeningsListTime);
+    screeningsWrapper.append(screeningsListRoom);
+
+    const listTitle = document.createElement("li");
+    listTitle.classList.add("screeningsListTitle");
+    listTitle.innerHTML = "Titel: ";
+
+    const listDate = document.createElement("li");
+    listDate.classList.add("screeningsListDate");
+    listDate.innerHTML = "Datum: ";
+
+    const listTime = document.createElement("li");
+    listTime.classList.add("screeningsListTime");
+    listTime.innerHTML = "Tid: ";
+
+    const listRoom = document.createElement("li");
+    listRoom.classList.add("screeningsListRoom");
+    listRoom.innerHTML = "Sal: ";
+
+    screeningsListTitle.append(listTitle);
+    screeningsListDate.append(listDate)
+    screeningsListTime.append(listTime);
+    screeningsListRoom.append(listRoom);
+
+    screenings.forEach((screening)=>{
+        const title = screening.movie.data.attributes.title;
+        const room = screening.room;
+        const d = new Date(screening.start_time);
+        const date = d.toLocaleDateString("sv-Se", {day:"numeric", month: "long"});
+        const time = d.toLocaleTimeString([], {hour: "2-digit", minute: "2-digit"});
+        let day;
+        switch(d.getDay()){
+            case 0:
+                day="Söndag";
+                break;
+            case 1:
+                day="Måndag";
+                break;
+            case 2:
+                day="Tisdag";
+                break;
+            case 3:
+                day="Onsdag";
+                break;
+            case 4:
+                day="Torsdag";
+                break;
+            case 5:
+                day="Fredag";
+                break;
+            case 6:
+                day="Lördag";
+                break;
+        }
+        const listItemTitle = document.createElement("li");
+        listItemTitle.classList.add("screeningsListItem");
+        listItemTitle.innerHTML = title;
+
+        const listItemDate = document.createElement("li");
+        listItemDate.classList.add("screeningsListItem");
+        listItemDate.innerHTML = day + " "+date;
+    
+        const listItemTime = document.createElement("li");
+        listItemTime.classList.add("screeningsListItem");
+        listItemTime.innerHTML = time;
+
+        const listItemRoom = document.createElement("li");
+        listItemRoom.classList.add("screeningsListItem");
+        listItemRoom.innerHTML = room;
+
+        screeningsListTitle.append(listItemTitle);
+        screeningsListDate.append(listItemDate);
+        screeningsListTime.append(listItemTime);
+        screeningsListRoom.append(listItemRoom);
+     })
+}
+}

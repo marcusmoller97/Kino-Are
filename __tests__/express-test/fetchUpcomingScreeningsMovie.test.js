@@ -4,6 +4,15 @@ import { fetchScreeningsMovie, upcomingScreenings } from '../../src/fetchScreeni
 
 
 describe("Tests that upcomingScreenings function is working", () => {
+    let dates = [];
+    let currentDate = new Date();
+
+    //create 3 dates higher than todays date.
+    for (let i = 1; i <= 3; i++) {
+        let newDate = new Date(currentDate);
+        newDate.setUTCDate(newDate.getUTCDate() + i * 5);
+        dates.push(newDate.toISOString());
+    }
     it('should return empty array when date is older than todays date', async () => {
         const fakeApi = {
             "data": [
@@ -67,7 +76,7 @@ describe("Tests that upcomingScreenings function is working", () => {
                 {
                     "id": 295,
                     "attributes": {
-                        "start_time": "2025-02-13T17:00:00.000Z",
+                        "start_time": dates[0],
                         "room": "Stora salongen",
                         "createdAt": "2025-01-29T14:19:16.064Z",
                         "updatedAt": "2025-01-29T14:19:16.064Z",
@@ -147,7 +156,7 @@ describe("Tests that upcomingScreenings function is working", () => {
                 {
                     "id": 295,
                     "attributes": {
-                        "start_time": "2025-02-14T17:00:00.000Z",
+                        "start_time": dates[0],
                         "room": "Stora salongen",
                         "createdAt": "2025-01-29T14:19:16.064Z",
                         "updatedAt": "2025-01-29T14:19:16.064Z",
@@ -172,7 +181,7 @@ describe("Tests that upcomingScreenings function is working", () => {
                 {
                     "id": 296,
                     "attributes": {
-                        "start_time": "2025-02-13T17:00:00.000Z",
+                        "start_time": dates[1],
                         "room": "Stora salongen",
                         "createdAt": "2025-01-29T14:19:16.064Z",
                         "updatedAt": "2025-01-29T14:19:16.064Z",
@@ -197,7 +206,7 @@ describe("Tests that upcomingScreenings function is working", () => {
                 {
                     "id": 297,
                     "attributes": {
-                        "start_time": "2025-02-05T17:00:00.000Z",
+                        "start_time": dates[2],
                         "room": "Stora salongen",
                         "createdAt": "2025-01-29T14:20:16.064Z",
                         "updatedAt": "2025-01-29T14:20:16.064Z",
@@ -236,7 +245,7 @@ describe("Tests that upcomingScreenings function is working", () => {
                 json: () => Promise.resolve(fakeApi),
             })
         );
-        
+
         const screenings = await fetchScreeningsMovie(9);
         const upcomingScreeningsRes = upcomingScreenings(screenings);
 
