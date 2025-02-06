@@ -1,6 +1,7 @@
 import express from 'express';
 import { renderMovies, renderPage, renderMoviesPage, renderMoviePage } from '../lib/renderPage.js';
 import { errorHandler } from '../lib/middleware.js';
+import { loadMovieRatings } from '../src/ratings.js';
 
 function initApp (API) {
     const app = express();
@@ -24,6 +25,10 @@ function initApp (API) {
         .get('/movies/:id', async (req, res) => {
             renderMoviePage(res, 'movie', req.params.id);
         });
+        /*.get('/movies/:id/rating', async (req, res) => {
+            const rating = await loadMovieRatings(req.params.id);
+            res.json({ movieId: req.params.id, rating });
+        });*/
 
 
     app
