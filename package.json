@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "sass:compile": "sass src/sections/main.scss ./static/main.css",
+    "build": "sass src/sections/main.scss ./static/main.css",
     "sass:watch": "sass --watch src/sections/main.scss ./static/main.css",
     "test:jest": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js __tests__/express-test",

@@ -3,6 +3,16 @@ import { describe, expect, it, jest, beforeEach } from '@jest/globals';
 import { fetchScreeningsMovie } from '../../src/fetchScreening';
 
 describe('Tests that the fetchScreeningsMovie can handle diffrent calls from api and return an array or error message depending on data.', () => {
+  let dates = [];
+  let currentDate = new Date();
+
+  //create 3 dates higher than todays date.
+  for (let i = 1; i <= 3; i++) {
+    let newDate = new Date(currentDate);
+    newDate.setUTCDate(newDate.getUTCDate() + i * 5);
+    dates.push(newDate.toISOString());
+  }
+
   beforeEach(() => {
     jest.clearAllMocks();
   });
@@ -13,7 +23,7 @@ describe('Tests that the fetchScreeningsMovie can handle diffrent calls from api
         {
           id: 295,
           attributes: {
-            start_time: '2025-02-13T17:00:00.000Z',
+            start_time: dates[0],
             room: 'Stora salongen',
             createdAt: '2025-01-29T14:19:16.064Z',
             updatedAt: '2025-01-29T14:19:16.064Z',
@@ -69,7 +79,7 @@ describe('Tests that the fetchScreeningsMovie can handle diffrent calls from api
         {
           id: 295,
           attributes: {
-            start_time: '2025-02-13T17:00:00.000Z',
+            start_time: dates[0],
             room: 'Stora salongen',
             createdAt: '2025-01-29T14:19:16.064Z',
             updatedAt: '2025-01-29T14:19:16.064Z',
@@ -95,7 +105,7 @@ describe('Tests that the fetchScreeningsMovie can handle diffrent calls from api
         {
           id: 296,
           attributes: {
-            start_time: '2025-02-13T17:00:00.000Z',
+            start_time: dates[1],
             room: 'Stora salongen',
             createdAt: '2025-01-29T14:19:16.064Z',
             updatedAt: '2025-01-29T14:19:16.064Z',
@@ -121,7 +131,7 @@ describe('Tests that the fetchScreeningsMovie can handle diffrent calls from api
         {
           id: 297,
           attributes: {
-            start_time: '2025-02-05T17:00:00.000Z',
+            start_time: dates[2],
             room: 'Stora salongen',
             createdAt: '2025-01-29T14:20:16.064Z',
             updatedAt: '2025-01-29T14:20:16.064Z',
