@@ -23,8 +23,6 @@ export async function fetchImdbRatings(movieId) {
         }
     };
 
-    console.log(`Fetching IMDb rating for IMDb ID: ${imdbId}`);
-
     try {
         const response = await fetch(url, options);
 
