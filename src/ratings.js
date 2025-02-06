@@ -1,8 +1,8 @@
 import fetch from 'node-fetch';
 import { API_BASE } from "./apiMovies.js";
 
-export async function fetchImdbRatings(movieId) {
-    const url = `https://imdb236.p.rapidapi.com/imdb/${movieId}/rating`;
+export async function fetchImdbRatings(imdbId) {
+    const url = `https://imdb236.p.rapidapi.com/imdb/${imdbId}/rating`;
     const options = {
         method: 'GET',
         headers: {
@@ -13,7 +13,7 @@ export async function fetchImdbRatings(movieId) {
 
     try {
         const response = await fetch(url, options);
-        const data = await response.json();
+        const data = await response.text();
 
         if (data.rating) {
             return parseFloat(data.rating).toFixed(2); 
