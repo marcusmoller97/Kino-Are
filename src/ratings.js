@@ -1,7 +1,19 @@
 import fetch from 'node-fetch';
-import { API_BASE } from "./apiMovies.js";
+import { API_BASE, loadMovie } from "./apiMovies.js";
 
-export async function fetchImdbRatings(imdbId) {
+// Function to fetch IMDb rating for a movie
+export async function fetchImdbRatings(movieId) {
+    if (!movieId) {
+        console.error("Error: Movie ID is required to fetch IMDb rating.");
+        return null;
+    }
+    const movie = await loadMovie(movieId);
+    if (!movie || !movie.attributes?.imdbId) {
+        console.error(`Error: No IMDb ID found for movie with ID: ${movieId}`);
+        return null;
+    }
+
+    const imdbId = movie.attributes.imdbId;
     const url = `https://imdb236.p.rapidapi.com/imdb/${imdbId}/rating`;
     const options = {
         method: 'GET',
@@ -11,18 +23,21 @@ export async function fetchImdbRatings(imdbId) {
         }
     };
 
+    console.log(`Fetching IMDb rating for IMDb ID: ${imdbId}`);
+
     try {
         const response = await fetch(url, options);
-        const data = await response.text();
 
-        if (data.rating) {
-            return parseFloat(data.rating).toFixed(2); 
-        } else {
-            return null;
+        if (!response.ok) {
+            throw new Error(`API request failed with status ${response.status}`);
         }
+
+        const data = await response.json();
+
+        return data.averageRating ? parseFloat(data.averageRating).toFixed(2) : "No ratings available";
     } catch (error) {
-        console.error("Fel vid hämtning av IMDB-betyg:", error);
-        return null;
+        console.error(`Error fetching IMDb rating for IMDb ID: ${imdbId}`, error);
+        return "No ratings available";
     }
 }
 
@@ -32,7 +47,7 @@ export async function loadMovieRatings(movieId) {
     const res = await fetch(url);
     const payload = await res.json();
     const reviews = Array.isArray(payload.data) ? payload.data : [];
-    
+
     if (reviews.length >= 5) {
         const ratings = reviews.map(review => review.attributes.rating);
         const avgRating = ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length;
