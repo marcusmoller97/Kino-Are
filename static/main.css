@@ -872,10 +872,10 @@ template {
   margin-top: 2rem;
 }
 .revSection .paginationControls .paginationBtn {
-  background-color: rgb(1, 255, 255);
+  background-color: #175dcc;
   border: none;
-  border-radius: 5px;
-  padding: 5px;
+  border-radius: 10px;
+  padding: 5px 10px;
   cursor: pointer;
   transition: all 0.2s ease;
 }
@@ -885,7 +885,7 @@ template {
 .revSection .paginationControls .paginationBtn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
-  background-color: aquamarine;
+  background-color: rgb(206, 206, 206);
 }
 .revSection .paginationControls .dots {
   display: flex;
@@ -897,13 +897,14 @@ template {
   width: 10px;
   height: 10px;
   margin: 5px;
-  background: black;
   display: inline-block;
   border-radius: 50%;
   cursor: pointer;
   opacity: 0.5;
+  background-color: rgb(57, 60, 60);
 }
 .revSection .paginationControls .dots .dot.active {
+  background: #175dcc;
   opacity: 1;
 }
 
