@@ -8,7 +8,7 @@ const BASE_URL = `https://plankton-app-xhkom.ondigitalocean.app/api/`;
  */
 async function fetchScreeningsMovie (id) {
     try {
-        const res = await fetch(BASE_URL + `screenings?populate=movie&filters[movie]=${id}`);
+        const res = await fetch(BASE_URL + `screenings?populate=movie&filters[movie]=${id}&pagination[pageSize]=1000`);
         if (!res.ok) {
             throw new Error(`Failed to fetch from API! Status: ${res.status} - ${res.statusText}`);
         }

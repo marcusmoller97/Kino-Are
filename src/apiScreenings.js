@@ -1,4 +1,4 @@
-const screeningsAPI = "https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie";
+const screeningsAPI = "https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie&pagination[pageSize]=1000";
 
 export default async function getScreenings(){
     const response = await fetch(screeningsAPI);

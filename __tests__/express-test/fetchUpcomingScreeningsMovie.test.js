@@ -63,7 +63,7 @@ describe("Tests that upcomingScreenings function is working", () => {
         const upcomingScreeningsRes = upcomingScreenings(screenings);
 
         expect(fetch).toHaveBeenCalledWith(
-            'https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie&filters[movie]=9'
+            'https://plankton-app-xhkom.ondigitalocean.app/api/screenings?populate=movie&filters[movie]=9&pagination[pageSize]=1000'
         );
 
         expect(screenings).toHaveLength(1);
