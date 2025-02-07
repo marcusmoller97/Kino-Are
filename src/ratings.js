@@ -41,16 +41,27 @@ export async function fetchImdbRatings(movieId) {
 
 // Function to fetch reviews for a movie
 export async function loadMovieRatings(movieId) {
-    const url = `${API_BASE}/reviews?filters[movie]=${movieId}`;
-    const res = await fetch(url);
-    const payload = await res.json();
-    const reviews = Array.isArray(payload.data) ? payload.data : [];
+    try {
+        const url = `${API_BASE}/reviews?filters[movie]=${movieId}`;
+        const res = await fetch(url);
 
-    if (reviews.length >= 5) {
-        const ratings = reviews.map(review => review.attributes.rating);
-        const avgRating = ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length;
-        return avgRating.toFixed(2);
-    } else {
-        return await fetchImdbRatings(movieId);
+        if (!res.ok) {
+            throw new Error(`Failed to fetch reviews for movie ID: ${movieId}`);
+        }
+
+        const payload = await res.json();
+        const reviews = Array.isArray(payload.data) ? payload.data : [];
+
+        if (reviews.length >= 5) {
+            const ratings = reviews.map(review => review.attributes.rating);
+            const avgRating = ratings.reduce((sum, rating) => sum + rating, 0) / ratings.length;
+            return avgRating.toFixed(2);
+        } else {
+            return await fetchImdbRatings(movieId);
+        }
+    } catch (error) {
+        console.error(`Error loading movie ratings for ${movieId}:`, error);
+        return 'No ratings available';
     }
 }
+

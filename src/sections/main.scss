@@ -4,6 +4,7 @@ $backgroundColor: #0e0e1b;
 $buttonColor: #175dcc;
 $textColor: #ffffff;
 @use 'normalize';
+@use "reviewGet.scss";
 
 * {
   margin: 0px;
@@ -575,77 +576,78 @@ article.movie {
     width: 200px;
     min-height: 30px;
 
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-   }
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
-
 #reviewForm {
-   display: grid;
-   grid-template-rows: auto auto auto;
-   gap: 2rem;
-   background-color: black;
-   color: white;
-   margin: 2rem auto;
-   max-width: fit-content;
-   padding: 1.5rem;
-   border-radius: 10px;
-   box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-   text-align: center;
- }
- 
- label {
-   font-size: 1rem;
-   font-weight: bold;
- }
- 
- input, select, textarea {
-   color: black;  
-   background-color: white;  
-   border: 1px solid gray;
-   padding: 0.5rem;
-   border-radius: 5px;
- }
- 
- 
- 
- #name {
-   grid-column: 1;
-   grid-row: 2;
- }
- 
- #rating {
-   grid-column: 2;
-   grid-row: 2;
+  display: grid;
+  grid-template-rows: auto auto auto;
+  gap: 2rem;
+  background-color: black;
+  color: white;
+  margin: 2rem auto;
+  max-width: fit-content;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  text-align: center;
+}
 
- }
- 
- #comment {
-   grid-column: 3;
-   grid-row: 2;
+label {
+  font-size: 1rem;
+  font-weight: bold;
+}
 
- }
- 
- #submitBtn {
-   grid-column: 3;
-   grid-row: 3;
-   background-color: white;
-   color: black;
-   padding: 0.75rem;
-   border: none;
-   border-radius: 10px;
-   cursor: pointer;
-   font-weight: bold;
-   transition: background 0.3s;
- }
- 
- #submitBtn:hover {
-   background-color: gray;
-   color: white;
- }
+input,
+select,
+textarea {
+  color: black;
+  background-color: white;
+  border: 1px solid gray;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
 
+.rating-option {
+  color: black;
+  background-color: white;
+}
+
+#name {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+#rating {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+#comment {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+#submitBtn {
+  grid-column: 3;
+  grid-row: 3;
+  background-color: white;
+  color: black;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s;
+}
+
+#submitBtn:hover {
+  background-color: gray;
+  color: white;
+}
 /* screenings */
 .screeningsTable {
   background-color: $backgroundColor;
@@ -665,42 +667,41 @@ article.movie {
   }
 }
 
-
 /* form moviePage */
 .movieRating {
   background-color: $backgroundColor;
 }
-.upcomingScreenings{
+.upcomingScreenings {
   display: grid;
   grid-template-columns: auto auto auto auto 1fr;
   background-color: $backgroundColor;
-  color:$textColor;
+  color: $textColor;
   padding: 2rem 5rem 2rem 5rem;
   margin: 1.5rem;
   border-radius: 10px;
   box-shadow: black 0px 0px 9px 0.01px;
 
-  
   ul{
      list-style-type: none;
+
   }
 }
 
-.screeningsTitle{
+.screeningsTitle {
   grid-column: 1;
   padding: 1rem;
 }
 
-.screeningsDate{
+.screeningsDate {
   grid-column: 2;
   padding: 1rem;
 }
 
-.screeningsTime{
+.screeningsTime {
   grid-column: 3;
   padding: 1rem;
 }
-.screeningsRoom{
+.screeningsRoom {
   grid-column: 4;
   padding: 1rem;
 }
