@@ -5,12 +5,12 @@ import { API_BASE, loadMovie } from "./apiMovies.js";
 export async function fetchImdbRatings(movieId) {
     if (!movieId) {
         console.error("Error: Movie ID is required to fetch IMDb rating.");
-        return null;
+        return "No ratings available";
     }
     const movie = await loadMovie(movieId);
     if (!movie || !movie.attributes?.imdbId) {
         console.error(`Error: No IMDb ID found for movie with ID: ${movieId}`);
-        return null;
+        return "No ratings available";
     }
 
     const imdbId = movie.attributes.imdbId;
