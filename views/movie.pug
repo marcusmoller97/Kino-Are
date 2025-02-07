@@ -10,15 +10,15 @@ block content
                 .moviesDes!= movie.attributes.intro
 
     hr
-    section.screeningsTable 
+    section.screeningsTable
         h2 Upcoming screenings
 
 
     form#reviewForm
-        label(for="name") Ditt namn: 
+        label(for="name") Ditt namn:
         input#name(type="text" required)
 
-        label(for="rating") Betyg: 
+        label(for="rating") Betyg:
         select#rating
             option(value="1" class="rating-option") 1
             option(value="2" class="rating-option") 2
@@ -29,19 +29,19 @@ block content
         label(for="comment") Kommentar: 
         textarea#comment(required)
 
-        button#submitBtn(type="submit") Skicka recension 
+        button#submitBtn(type="submit") Skicka recension
 
     script.
         document.getElementById("reviewForm").addEventListener("submit", function(event) {
-            event.preventDefault(); 
+            event.preventDefault();
 
-            const movieId = "#{movie.id}"; 
+            const movieId = "#{movie.id}";
             const reviewData = {
                 data: {
                     name: document.getElementById("name").value,
                     rating: document.getElementById("rating").value,
                     comment: document.getElementById("comment").value,
-                    movie: movieId,  
+                    movie: movieId,
                     createdAt: new Date().toISOString(),
                     updatedAt: new Date().toISOString()
                 }
@@ -63,4 +63,8 @@ block content
                 console.error("Fel vid skickande av recension:", error);
             });
         });
-
+    section.revSection(data-movie-id=movie.id)
+        h2 Recensioner
+        .revPages
+    //-----Content loads dynamicly from .js-----
+    script(src="/js/GetReview.js")

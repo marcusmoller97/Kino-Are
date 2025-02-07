@@ -4,6 +4,7 @@ $backgroundColor: #0e0e1b;
 $buttonColor: #175dcc;
 $textColor: #ffffff;
 @use 'normalize';
+@use "reviewGet.scss";
 
 * {
   margin: 0px;
@@ -647,7 +648,6 @@ textarea {
   background-color: gray;
   color: white;
 }
-
 /* screenings */
 .screeningsTable {
   background-color: $backgroundColor;
@@ -681,8 +681,9 @@ textarea {
   border-radius: 10px;
   box-shadow: black 0px 0px 9px 0.01px;
 
-  ul {
-    list-style-type: none;
+  ul{
+     list-style-type: none;
+
   }
 }
 

@@ -34,7 +34,9 @@ function initApp(API) {
     .use('/static', express.static('./static'))
     .use('/pictures', express.static('./pictures'))
     .use('/content', express.static('./content'))
-    .use('/js', express.static('./js'));
+    .use('/js', express.static('./js'))
+    .use("/api",apiRouter);
+
 
   app.all('*', (_req, res) => {
     res.status(404);
