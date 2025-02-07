@@ -6,7 +6,7 @@ import reviewUtils from './reviewUtils.js';
 const router = express();
 
 router
-  .get('/top-movies', async (_req, res) => {
+  .get('/reviews/top-movies', async (_req, res) => {
     // fetch api
     try {
       await reviewUtils.fetchReviews();
@@ -33,16 +33,19 @@ router
   })
   .post('/movies/review', async (req, res) => {
     const reviewData = req.body;
-    console.log("Mottagen data:", req.body);
+    console.log('Mottagen data:', req.body);
 
     try {
-      const response = await fetch('https://plankton-app-xhkom.ondigitalocean.app/api/reviews', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(reviewData),
-      });
+      const response = await fetch(
+        'https://plankton-app-xhkom.ondigitalocean.app/api/reviews',
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(reviewData),
+        }
+      );
 
       const data = await response.json();
       res.status(200).json(data);
@@ -52,7 +55,7 @@ router
     }
   })
   .get('/screenings/upcoming', async (req, res) => {
-    console.log("In app.js");
+    console.log('In app.js');
     const screenings = await fetchUpcomingScreenings();
     res.send(screenings);
   });
