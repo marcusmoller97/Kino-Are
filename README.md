@@ -17,5 +17,8 @@
 * GET-request screening/upcoming/:id
   * Kunna hämta information om de kommande filmvisningar om en film.
 
+#### API Documentation
+- GET /api/movies/:movieId/reviews?page=1&pageSize=5
+  Returns up to 5 verified reviews per page. Responds with 404 if no reviews are found.
 # Server web url
 * **https://kino-are.onrender.com**

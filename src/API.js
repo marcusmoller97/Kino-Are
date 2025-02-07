@@ -35,6 +35,10 @@ router
 	.get("/movies/:movieId/reviews", async (req, res) => {
 		try {
 			const { movieId } = req.params;
+			//--validation for moive id -------
+			if (isNaN(movieId)) {
+				return res.status(400).json({ message: "Wrong movie id here" });
+			}
 			const { page = 1 } = req.query;
 			const pageSize = 5;
 			const cmsUrl = new URL("https://plankton-app-xhkom.ondigitalocean.app/api/reviews");
@@ -68,7 +72,6 @@ router
   .post('/movies/review', async (req, res) => {
     const reviewData = req.body;
     console.log('Mottagen data:', req.body);
-
     try {
       const response = await fetch(
         'https://plankton-app-xhkom.ondigitalocean.app/api/reviews',

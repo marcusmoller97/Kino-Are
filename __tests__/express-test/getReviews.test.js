@@ -17,7 +17,6 @@ describe("GET /api/movies/:movieId/reviews", () => {
 	it("should return 404 if no reviews exist", async () => {
 		const response = await request(app).get("/api/movies/9999/reviews?page=1&pageSize=5");
 		expect(response.status).toBe(404);
-		// Updated expected message to match API response.
 		expect(response.body).toHaveProperty("message", "This movie has no review yet!");
 	});
 
@@ -29,5 +28,10 @@ describe("GET /api/movies/:movieId/reviews", () => {
 		expect(response.body).toHaveProperty("error", "CMS API is down");
 
 		global.fetch.mockRestore();
+	});
+
+	it("should return 400 for invalid movieId", async () => {
+		const response = await request(app).get("/api/movies/invalid/reviews?page=1&pageSize=5");
+		expect(response.status).toBe(400);
 	});
 });
