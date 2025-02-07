@@ -1431,12 +1431,19 @@ label {
   font-weight: bold;
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
   color: black;
   background-color: white;
   border: 1px solid gray;
   padding: 0.5rem;
   border-radius: 5px;
+}
+
+.rating-option {
+  color: black;
+  background-color: white;
 }
 
 #name {
