@@ -19,29 +19,26 @@ router
       res.status(500);
     }
   })
+
+          // Fetch screenings for the movie
   .get('/screenings/upcoming/:id', async (req, res) => {
     try {
         const movieId = req.params.id;
 
-        // Fetch screenings for the movie
         let payload = await fetchScreeningsMovie(movieId);
         payload = upcomingScreenings(payload);
-
-        // Send the screenings in the response
         res.send(payload);
     } catch (error) {
         console.error(error);
         res.status(500).send({ error: "Internal Server Error" });
     }
   })
+
+          // Fetch ratings for the movie
   .get('/movies/:id/rating', async (req, res) => {
     try {
         const movieId = req.params.id;
-
-        // Fetch ratings for the movie
         const rating = await loadMovieRatings(movieId);
-
-        // Send the rating in the response
         res.send({ rating });
     } catch (error) {
         console.error(error);
