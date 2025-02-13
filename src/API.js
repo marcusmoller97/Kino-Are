@@ -2,6 +2,7 @@ import express from "express";
 import { upcomingScreenings, fetchScreeningsMovie } from "./fetchScreening.js";
 import { fetchUpcomingScreenings } from "./screenings.js";
 import reviewUtils from "./reviewUtils.js";
+import { loadMovieRatings } from "./ratings.js";
 
 const router = express();
 router
@@ -20,14 +21,31 @@ router
   })
   .get('/screenings/upcoming/:id', async (req, res) => {
     try {
-      const movieId = req.params.id;
+        const movieId = req.params.id;
 
-      let payload = await fetchScreeningsMovie(movieId);
-      payload = upcomingScreenings(payload);
-      res.send(payload);
+        // Fetch screenings for the movie
+        let payload = await fetchScreeningsMovie(movieId);
+        payload = upcomingScreenings(payload);
+
+        // Send the screenings in the response
+        res.send(payload);
     } catch (error) {
-      console.error(error);
-      res.status(500);
+        console.error(error);
+        res.status(500).send({ error: "Internal Server Error" });
+    }
+  })
+  .get('/movies/:id/rating', async (req, res) => {
+    try {
+        const movieId = req.params.id;
+
+        // Fetch ratings for the movie
+        const rating = await loadMovieRatings(movieId);
+
+        // Send the rating in the response
+        res.send({ rating });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: "Internal Server Error" });
     }
   })
 

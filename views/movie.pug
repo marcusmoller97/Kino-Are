@@ -1,4 +1,5 @@
 extends layout/main-layout.pug
+
 block content
     a.backAllMovies(href='/movies') Show all movies
     article.movie
@@ -17,7 +18,6 @@ block content
     hr
     section.screeningsTable
         h2 Upcoming screenings
-
 
     form#reviewForm
         label(for="name") Ditt namn:
@@ -52,7 +52,6 @@ block content
                 }
             };
 
-
             fetch("/movies/review", {
                 method: "POST",
                 headers: {
@@ -69,3 +68,44 @@ block content
             });
         });
 
+        const movieId = "#{movie.id}";
+
+        // Fetch screenings
+        fetch(`/screenings/upcoming/${movieId}`)
+            .then(response => response.json())
+            .then(data => {
+                const screeningsList = document.getElementById("screeningsList");
+                if (data.screenings && data.screenings.length > 0) {
+                    // Clear any existing content
+                    screeningsList.innerHTML = "";
+
+                    // Loop through screenings and display them
+                    data.screenings.forEach(screening => {
+                        const screeningElement = document.createElement("div");
+                        screeningElement.textContent = `${screening.time} - ${screening.location}`;
+                        screeningsList.appendChild(screeningElement);
+                    });
+                } else {
+                    screeningsList.innerHTML = "<p>No upcoming screenings</p>";
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching screenings:", error);
+                document.getElementById("screeningsList").innerHTML = "<p>No upcoming screenings</p>";
+            });
+
+        // Fetch ratings
+        fetch(`/movies/${movieId}/rating`)
+            .then(response => response.json())
+            .then(data => {
+                const ratingElement = document.getElementById("movieRating");
+                if (data.rating && !isNaN(data.rating)) {
+                    ratingElement.textContent = data.rating;
+                } else {
+                    ratingElement.textContent = "No ratings available";
+                }
+            })
+            .catch(error => {
+                console.error("Error fetching ratings:", error);
+                document.getElementById("movieRating").textContent = "No ratings available";
+            });
