@@ -7,6 +7,17 @@ const app = express();
 app.use("/api", apiRouter);
 
 describe("GET /api/movies/:movieId/reviews", () => {
+	it("should return paginated reviews with only verified reviews", async () => {
+		const response = await request(app).get("/api/movies/1/reviews?page=1&pageSize=5");
+		expect(response.status).toBe(200);
+		expect(response.body).toHaveProperty("data");
+		// Check that every returned review is verified (verified === true)
+		response.body.data.forEach(review => {
+			expect(review.attributes.verified).toBe(true);
+		});
+		expect(response.body.data.length).toBeLessThanOrEqual(5);
+	});
+
 	it("should return paginated reviews", async () => {
 		const response = await request(app).get("/api/movies/1/reviews?page=1&pageSize=5");
 		expect(response.status).toBe(200);
