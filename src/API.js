@@ -47,34 +47,34 @@ router
   })
 
 	//-----------cms endpoint------------
-	.get("/movies/:movieId/reviews", async (req, res) => {
+  .get("/movies/:movieId/reviews", async (req, res) => {
 		try {
 			const { movieId } = req.params;
-			const { page = 1, pageSize = 5 } = req.query;
-
-			//--------filters with cms compatible------
-			const cmsUrl = new URL(
-				"https://plankton-app-xhkom.ondigitalocean.app/api/reviews"
-			);
+			const { page = 1 } = req.query;
+			const pageSize = 5;
+			const cmsUrl = new URL("https://plankton-app-xhkom.ondigitalocean.app/api/reviews");
 			cmsUrl.searchParams.append("filters[movie][id][$eq]", movieId);
+			cmsUrl.searchParams.append("filters[verified][$eq]", "true");
 			cmsUrl.searchParams.append("pagination[page]", page);
 			cmsUrl.searchParams.append("pagination[pageSize]", pageSize);
 			cmsUrl.searchParams.append("populate", "movie");
-
-			console.log("CMS URL--->", cmsUrl.toString());
 
 			const response = await fetch(cmsUrl);
 			if (!response.ok) {
 				throw new Error(`CMS API Error: ${response.statusText}`);
 			}
 			const data = await response.json();
-			//---se if the review exist---
-			if (!data.data || data.data.length === 0) {
-				return res
-					.status(404)
-					.json({ message: "This movie has no review yet!" });
+
+			//------include only rev with verified true-------
+			const verifiedReviews = data.data.filter(
+				review => review.attributes.verified === true
+			);
+			console.log("Verified Reviews --->", verifiedReviews);
+
+			if (!verifiedReviews || verifiedReviews.length === 0) {
+				return res.status(404).json({ message: "This movie has no review yet!" });
 			}
-			res.json(data);
+			res.json({ ...data, data: verifiedReviews });
 		} catch (error) {
 			res.status(500).json({ error: error.message });
 		}
