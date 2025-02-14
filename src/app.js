@@ -27,6 +27,10 @@ function initApp(API) {
     .get('/movies/:id', async (req, res) => {
       renderMoviePage(res, 'movie', req.params.id);
         })
+    /*.get('/movies/:id/rating', async (req, res) => {
+            const rating = await loadMovieRatings(req.params.id);
+            res.json({ movieId: req.params.id, rating });
+        });*/
 
   app
     .use(express.json())
