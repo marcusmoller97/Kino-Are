@@ -32,6 +32,10 @@ function initApp(API) {
             res.json({ movieId: req.params.id, rating });
         });*/
 
+        .get('/login', (_req, res) => {
+          renderPage(res, 'login');
+        })
+
   app
     .use(express.json())
     .use(apiRouter)
