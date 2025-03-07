@@ -1,0 +1,38 @@
+doctype html
+html(lang="sv")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    script(type="module", src="/js/password.js", defer)
+    title Skapa konto
+  body
+    .container
+      h2 Skapa konto
+
+      form#registerForm
+        .form-row
+          .form-group
+            label(for="firstname") Förnamn*
+            input(type="text" id="förnamn" name="förnamn" required)
+          .form-group
+            label(for="lastname") Efternamn*
+            input(type="text" id="efternamn" name="efternamn" required)
+
+        .form-row
+          .form-group
+            label(for="email") Mailadress
+            input(type="email" id="email" name="email" required)
+          .form-group
+            label(for="phone") Telefon*
+            input(type="tel" id="telefon" name="telefon" required)
+
+        .form-row
+          .form-group
+            label(for="lösenord") Lösenord
+            input(type="lösenord" id="lösenord" name="lösenord" required)
+          .form-group
+            label(for="upprepaLösenord") Upprepa Lösenord*
+            input(type="upprepaLösenord" id="upprepaLösenord" name="upprepaLösenord" required)
+
+        .form-group
+          button(type="submit") Skapa konto

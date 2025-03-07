@@ -16,10 +16,11 @@
   * Kunna hämta efter film och kommande visningar (max 10 screenings på startsida).
 * GET-request screening/upcoming/:id
   * Kunna hämta information om de kommande filmvisningar om en film.
-## Rating 
+## Rating
 * GET-request movies/:id/rating
   * kunna hämta betyg på filmerna antingen från den angivna APi eller från IMDB om det inte finns tillräckligt med reviews.
-
-
+## Reviews
+- GET /api/movies/:movieId/reviews?page=1&pageSize=5
+  Returns up to 5 verified reviews per page. Responds with 404 if no reviews are found.
 # Server web url
 * **https://kino-are.onrender.com**
