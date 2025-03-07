@@ -21,38 +21,32 @@ if (pathUrl === '/test-login') {
 }
 
 function createAccount() {
-  const förnamn = document.getElementById('förnamn').value;
-  const efternamn = document.getElementById('efternamn').value;
-  const name = förnamn + ' ' + efternamn;
-  const mailadress = document.getElementById('email').value;
-  const telefon = document.getElementById('telefon').value;
-  const lösenord = document.getElementById('lösenord').value;
-  const upprepatLösenord = document.getElementById('upprepaLösenord').value;
+  const firstName = document.getElementById('firstName').value;
+  const lastName = document.getElementById('lastName').value;
+  const fullName = firstName + ' ' + lastName;
+  const email = document.getElementById('email').value;
+  const phoneNumber = document.getElementById('phoneNumber').value;
+  const password = document.getElementById('password').value;
+  const repeatedPassword = document.getElementById('repeatedPassword').value;
 
-  /*   console.error('Här kommer lösenordets längd');
-  console.log(
-    '------------------------------------------------------------------'
-  ); */
-
-  if (lösenord !== upprepatLösenord) {
+  if (password !== repeatedPassword) {
     // TODO: Korrekt logik för att visa felmeddelande enligt figma
     alert('Lösenorden matchar inte');
     return;
-  } else if (lösenord.length < 8) {
+  } else if (password.length < 8) {
     alert('lösenord måste vara minst 8 tecken!');
     return;
-  } else if (localStorage.getItem(mailadress)) {
+  } else if (localStorage.getItem(email)) {
     alert('Ett konto med denna mailadress finns redan!');
     return;
   }
 
   localStorage.setItem(
-    mailadress,
-    JSON.stringify({ name, mailadress, telefon, lösenord })
+    email,
+    JSON.stringify({ fullName, email, phoneNumber, password })
   );
 
-  console.log(förnamn, efternamn, mailadress, telefon, lösenord);
-  console.log('Nu har det submittats');
+  alert('Välkommen ' + fullName + ' Du har nu skapat ditt konto');
 }
 
 function login() {
