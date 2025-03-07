@@ -33,6 +33,9 @@ function initApp(API) {
 		})
 		.get("/test", async (_req, res) => {
 			renderPage(res, "test")
+		})
+		.get("/test-login", (_req, res) => {
+			renderPage(res, "test-login");
 		});
 
 	app

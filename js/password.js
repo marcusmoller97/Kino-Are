@@ -1,11 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
-    document.getElementById('registerForm').addEventListener('submit', function (event) {
-        event.preventDefault();
-        createAccount();
+const pathUrl = window.location.pathname;
+
+if (pathUrl === '/test-login') {
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('loginForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            login();
+        });
     });
-});
-
-
+} else if (pathUrl === '/test') {
+    document.addEventListener('DOMContentLoaded', () => {
+        document.getElementById('registerForm').addEventListener('submit', function (event) {
+            event.preventDefault();
+            createAccount();
+        });
+    });
+}
 
 function createAccount () {
     const förnamn = document.getElementById('förnamn').value;
@@ -28,13 +37,6 @@ function createAccount () {
         return;
     }
 
-    /* const keyExist = Object.keys(localStorage).some(key => key === mailadress)
-
-    if (keyExist) {
-      alert('Ett konto med denna mailadress finns redan!');
-      return;
-    } */
-
     Object.keys(localStorage).forEach(key => {
         let value = localStorage.getItem(key);
         console.log(key);
@@ -45,6 +47,22 @@ function createAccount () {
 
     console.log(förnamn, efternamn, mailadress, telefon, lösenord);
     console.log('Nu har det submittats');
+}
+
+function login () {
+    const email = document.querySelector('#username').value;
+    const password = document.querySelector('#password').value;
+    const user = JSON.parse(localStorage.getItem(email));
+
+    if (!localStorage.getItem(email)) {
+        alert('Fel epostadress');
+        return;
+    } else if (user.lösenord !== password) {
+        alert('Fel Lösenord');
+        return;
+    } if (localStorage.getItem(email) && user.lösenord === password) {
+        alert('Du är inloggad');
+    }
 }
 
 function clearSession () {
