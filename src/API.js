@@ -31,8 +31,19 @@ router
 			res.status(500);
 		}
 	})
+	// Fetch ratings for the movie
+	.get('/movies/:id/rating', async (req, res) => {
+		try {
+			const movieId = req.params.id;
+			const rating = await loadMovieRatings(movieId);
+			res.send({ rating });
+		} catch (error) {
+			console.error(error);
+			res.status(500).send({ error: "Internal Server Error" });
+		}
+	})
 	//-----------cms endpoint------------
-  .get("/movies/:movieId/reviews", async (req, res) => {
+  	.get("/movies/:movieId/reviews", async (req, res) => {
 		try {
 			const { movieId } = req.params;
 			//--validation for movie id-------
