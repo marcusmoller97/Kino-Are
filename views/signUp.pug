@@ -3,36 +3,66 @@ html(lang="sv")
   head
     meta(charset="UTF-8")
     meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    // Bootstrap CSS
+    link(rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css")
+    style.
+      .vh-80 {
+        height: 80vh !important;
+      }
+      .leftImg {
+        height: 100%;
+      }
     script(type="module", src="/js/password.js", defer)
     title Skapa konto
-  body
-    .container
-      h2 Skapa konto
+  body.min-vh-100.d-flex.align-items-center.justify-content-center
+    .container.d-flex.flex-column.flex-md-row.p-0.overflow-hidden.rounded-4.bg-dark.bg-opacity-77.mx-auto
+      div.leftBox.vh-80
+        img.leftImg(src="", alt="shiit, movie cover not found!")
+      form#registerForm.d-flex.flex-column.w-100.flex-fill.align-items-center.justify-content-center.text-white
+        h2.mb-4 Skapa konto
+        .row.mb-3
+          .col-md-6
+            .form-group.mb-3
+              label.form-label(for="firstName") Förnamn*
+              input.form-control(type="text" id="firstName" name="firstName" required)
+          .col-md-6
+            .form-group.mb-3
+              label.form-label(for="lastName") Efternamn*
+              input.form-control(type="text" id="lastName" name="lastName" required)
 
-      form#registerForm
-        .form-row
-          .form-group
-            label(for="firstname") Förnamn*
-            input(type="text" id="firstName" name="firstName" required)
-          .form-group
-            label(for="lastname") Efternamn*
-            input(type="text" id="lastName" name="lastName" required)
+        .row.mb-3
+          .col-md-6
+            .form-group.mb-3
+              label.form-label(for="email") Mailadress*
+              input.form-control(type="email" id="email" name="email" required)
+          .col-md-6
+            .form-group.mb-3
+              label.form-label(for="phoneNumber") Telefon*
+              input.form-control(type="tel" id="phoneNumber" name="phoneNumber" required)
 
-        .form-row
-          .form-group
-            label(for="email") Mailadress
-            input(type="email" id="email" name="email" required)
-          .form-group
-            label(for="phone") Telefon*
-            input(type="tel" id="phoneNumber" name="phoneNumber" required)
+        .row.mb-3
+          .col-md-6
+            .form-group.mb-3
+              label.form-label(for="password") Lösenord*
+              input.form-control(type="password" id="password" name="password" required)
+          .col-md-6
+            .form-group.mb-3
+              label.form-label(for="repeatedPassword") Upprepa Lösenord*
+              input.form-control(type="password" id="repeatedPassword" name="repeatedPassword" required)
 
-        .form-row
-          .form-group
-            label(for="lösenord") Lösenord
-            input(type="lösenord" id="password" name="password" required)
-          .form-group
-            label(for="upprepaLösenord") Upprepa Lösenord*
-            input(type="upprepaLösenord" id="repeatedPassword" name="repeatedPassword" required)
+        .d-grid.gap-2.d-md-flex.justify-content-md-end.mt-4
+          button.btn.btn-primary(type="submit") Skapa konto
+        p.errorPromp.mt-3.fw-bold
 
-        .form-group
-          button(type="submit") Skapa konto
+    //---------extract the and use the img from movie.pug into leftImg--------
+    script.
+      document.addEventListener('DOMContentLoaded', function() {
+        const urlParams = new URLSearchParams(window.location.search);
+        const imgUrl = urlParams.get('img');
+        if (imgUrl) {
+          document.querySelector('.leftImg').src = decodeURIComponent(imgUrl);
+        }
+      });
+
+    //------Bootstrap JS Bundle with Popper---------
+    script(src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js")

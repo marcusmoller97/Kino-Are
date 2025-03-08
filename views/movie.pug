@@ -25,6 +25,7 @@ block content
     form#reviewForm
         label(for="name") Ditt namn:
         input#name(type="text" required)
+
         label(for="rating") Betyg:
         select#rating
             option(value="1" class="rating-option") 1
@@ -86,6 +87,8 @@ block content
                         screeningElement.textContent = `${screening.time} - ${screening.location}`;
                         screeningsList.appendChild(screeningElement);
                     });
+                } else {
+                    screeningsList.innerHTML = "<p>No upcoming screenings</p>";
                 }
             })
             .catch(error => {
@@ -108,11 +111,13 @@ block content
                 console.error("Error fetching ratings:", error);
                 document.getElementById("movieRating").textContent = "No ratings available";
             });
-        //---------Redirect user to sign up page---------
+        //---------Redirect user to sign up page with the img url---------
         const signUpBtn = document.querySelector('.signUpBtn');
         if (signUpBtn) {
           signUpBtn.addEventListener('click', () => {
-            window.location.href = '/signup';
+            const movieImg = document.querySelector('.moviesImg');
+            const imgUrl = movieImg ? encodeURIComponent(movieImg.src) : '';
+            window.location.href = '/signup?img=' + imgUrl;
           });
         }
     section.revSection(data-movie-id=movie.id)

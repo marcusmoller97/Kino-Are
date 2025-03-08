@@ -28,16 +28,24 @@ function createAccount() {
 	const phoneNumber = document.getElementById("phoneNumber").value;
 	const password = document.getElementById("password").value;
 	const repeatedPassword = document.getElementById("repeatedPassword").value;
+	const errorPrompt = document.querySelector(".errorPromp");
+	errorPrompt.textContent = "";
+	errorPrompt.classList.remove("text-danger", "text-success");
 
 	if (password !== repeatedPassword) {
-		// TODO: Korrekt logik för att visa felmeddelande enligt figma
-		alert("Lösenorden matchar inte");
+		const errorMsg = "Lösenorden matchar inte";
+		errorPrompt.textContent = errorMsg;
+		errorPrompt.classList.add("text-danger");
 		return;
 	} else if (password.length < 8) {
-		alert("lösenord måste vara minst 8 tecken!");
+		const errorMsg = "lösenord måste vara minst 8 tecken!";
+		errorPrompt.textContent = errorMsg;
+		errorPrompt.classList.add("text-danger");
 		return;
 	} else if (localStorage.getItem(email)) {
-		alert("Ett konto med denna mailadress finns redan!");
+		const errorMsg = "Ett konto med denna mailadress finns redan!";
+		errorPrompt.textContent = errorMsg;
+		errorPrompt.classList.add("text-danger");
 		return;
 	}
 
@@ -46,7 +54,9 @@ function createAccount() {
 		JSON.stringify({ fullName, email, phoneNumber, password })
 	);
 
-	alert("Välkommen " + fullName + " Du har nu skapat ditt konto");
+	const successMsg = "Välkommen " + fullName + " Du har nu skapat ditt konto";
+	errorPrompt.textContent = successMsg;
+	errorPrompt.classList.add("text-success");
 }
 
 function login() {
