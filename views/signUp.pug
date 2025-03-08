@@ -19,6 +19,9 @@ html(lang="sv")
       div.leftBox.vh-80
         img.leftImg(src="", alt="shiit, movie cover not found!")
       form#registerForm.d-flex.flex-column.w-100.flex-fill.align-items-center.justify-content-center.text-white
+        .paginationStats.d-flex.justify-content-center.my-3.gap-2
+          - for (let i = 0; i < 7; i++)
+            .rounded-circle.bg-light.opacity-50(class=i === 2 ? 'opacity-100' : '' style="width: 50px; height: 50px;")
         h2.mb-4 Skapa konto
         .row.mb-3
           .col-md-6
@@ -51,8 +54,8 @@ html(lang="sv")
               input.form-control(type="password" id="repeatedPassword" name="repeatedPassword" required)
 
         .d-grid.gap-2.d-md-flex.justify-content-md-end.mt-4
-          button.btn.btn-primary(type="submit") Skapa konto
-        p.errorPromp.mt-3.fw-bold
+          button.btn.mb-5.btn-primary(type="submit") Skapa konto
+        p.errorPromp.mt-3.fw-bold.bg-danger.text-white.py-2.px-4.rounded-4.d-none
 
     //---------extract the and use the img from movie.pug into leftImg--------
     script.

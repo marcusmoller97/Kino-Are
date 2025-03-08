@@ -20,6 +20,17 @@ if (pathUrl === "/test-login") {
 	});
 }
 
+function updateErrorPrompt(element, message, isError = true) {
+	element.classList.remove("d-none", "bg-danger", "bg-success");
+	element.textContent = message;
+
+	if (message === "") {
+		element.classList.add("d-none");
+	} else {
+		element.classList.add(isError ? "bg-danger" : "bg-success");
+	}
+}
+
 function createAccount() {
 	const firstName = document.getElementById("firstName").value;
 	const lastName = document.getElementById("lastName").value;
@@ -29,23 +40,18 @@ function createAccount() {
 	const password = document.getElementById("password").value;
 	const repeatedPassword = document.getElementById("repeatedPassword").value;
 	const errorPrompt = document.querySelector(".errorPromp");
-	errorPrompt.textContent = "";
-	errorPrompt.classList.remove("text-danger", "text-success");
-
+	updateErrorPrompt(errorPrompt, "");
 	if (password !== repeatedPassword) {
-		const errorMsg = "Lösenorden matchar inte";
-		errorPrompt.textContent = errorMsg;
-		errorPrompt.classList.add("text-danger");
+		updateErrorPrompt(errorPrompt, "Lösenorden matchar inte");
 		return;
 	} else if (password.length < 8) {
-		const errorMsg = "lösenord måste vara minst 8 tecken!";
-		errorPrompt.textContent = errorMsg;
-		errorPrompt.classList.add("text-danger");
+		updateErrorPrompt(errorPrompt, "lösenord måste vara minst 8 tecken!");
 		return;
 	} else if (localStorage.getItem(email)) {
-		const errorMsg = "Ett konto med denna mailadress finns redan!";
-		errorPrompt.textContent = errorMsg;
-		errorPrompt.classList.add("text-danger");
+		updateErrorPrompt(
+			errorPrompt,
+			"Ett konto med denna mailadress finns redan!"
+		);
 		return;
 	}
 
@@ -54,9 +60,11 @@ function createAccount() {
 		JSON.stringify({ fullName, email, phoneNumber, password })
 	);
 
-	const successMsg = "Välkommen " + fullName + " Du har nu skapat ditt konto";
-	errorPrompt.textContent = successMsg;
-	errorPrompt.classList.add("text-success");
+	updateErrorPrompt(
+		errorPrompt,
+		"Välkommen " + fullName + " Du har nu skapat ditt konto",
+		false
+	);
 }
 
 function login() {
