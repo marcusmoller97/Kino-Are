@@ -57,11 +57,11 @@ function login() {
   if (!localStorage.getItem(email)) {
     alert('Fel epostadress');
     return;
-  } else if (user.lösenord !== password) {
+  } else if (user.password !== password) {
     alert('Fel Lösenord');
     return;
   }
-  if (localStorage.getItem(email) && user.lösenord === password) {
+  if (localStorage.getItem(email) && user.password === password) {
     alert('Du är inloggad');
   }
 }
