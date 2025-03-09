@@ -15,7 +15,7 @@ block content
                 h3 Rating:
                 i.fa-solid.fa-star(style='color: #FFD43B;')
                 span#movieRating #{rating}
-
+            button.signUpBtn Sign Up
     hr
 
     section.screeningsTable
@@ -25,6 +25,7 @@ block content
     form#reviewForm
         label(for="name") Ditt namn:
         input#name(type="text" required)
+
         label(for="rating") Betyg:
         select#rating
             option(value="1" class="rating-option") 1
@@ -86,6 +87,8 @@ block content
                         screeningElement.textContent = `${screening.time} - ${screening.location}`;
                         screeningsList.appendChild(screeningElement);
                     });
+                } else {
+                    screeningsList.innerHTML = "<p>No upcoming screenings</p>";
                 }
             })
             .catch(error => {
@@ -107,7 +110,16 @@ block content
             .catch(error => {
                 console.error("Error fetching ratings:", error);
                 document.getElementById("movieRating").textContent = "No ratings available";
-            })
+            });
+        //---------Redirect user to sign up page with the img url---------
+        const signUpBtn = document.querySelector('.signUpBtn');
+        if (signUpBtn) {
+          signUpBtn.addEventListener('click', () => {
+            const movieImg = document.querySelector('.moviesImg');
+            const imgUrl = movieImg ? encodeURIComponent(movieImg.src) : '';
+            window.location.href = '/signup?img=' + imgUrl;
+          });
+        }
     section.revSection(data-movie-id=movie.id)
         h2 Verified reviews
         .revPages

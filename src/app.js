@@ -27,8 +27,8 @@ function initApp(API) {
 		.get("/movies/:id", async (req, res) => {
 			renderMoviePage(res, "movie", req.params.id);
 		})
-		.get("/test", async (_req, res) => {
-			renderPage(res, "test")
+		.get("/signUp", async (_req, res) => {
+			renderPage(res, "signUp")
 		})
 		.get("/test-login", (_req, res) => {
 			renderPage(res, "test-login");

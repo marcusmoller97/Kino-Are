@@ -1,72 +1,91 @@
-const pathUrl = window.location.pathname;
+const pathUrl = window.location.pathname.toLowerCase();
 
-if (pathUrl === '/test-login') {
-    document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('loginForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            login();
-        });
-    });
-} else if (pathUrl === '/test') {
-    document.addEventListener('DOMContentLoaded', () => {
-        document.getElementById('registerForm').addEventListener('submit', function (event) {
-            event.preventDefault();
-            createAccount();
-        });
-    });
+if (pathUrl === "/test-login") {
+	document.addEventListener("DOMContentLoaded", () => {
+		document
+			.getElementById("loginForm")
+			.addEventListener("submit", function (event) {
+				event.preventDefault();
+				login();
+			});
+	});
+} else if (pathUrl === "/signup") {
+	document.addEventListener("DOMContentLoaded", () => {
+		document
+			.getElementById("registerForm")
+			.addEventListener("submit", function (event) {
+				event.preventDefault();
+				createAccount();
+			});
+	});
 }
 
-function createAccount () {
-    const förnamn = document.getElementById('förnamn').value;
-    const efternamn = document.getElementById('efternamn').value;
-    const name = förnamn + " " + efternamn;
-    const mailadress = document.getElementById('email').value;
-    const telefon = document.getElementById('telefon').value;
-    const lösenord = document.getElementById('lösenord').value;
-    const upprepatLösenord = document.getElementById('upprepaLösenord').value;
+function updateErrorPrompt(element, message, isError = true) {
+	element.classList.remove("d-none", "bg-danger", "bg-success");
+	element.textContent = message;
 
-    if (lösenord !== upprepatLösenord) {
-
-        // TODO: Korrekt logik för att visa felmeddelande enligt figma
-        alert('Lösenorden matchar inte');
-        return;
-    }
-
-    if (localStorage.getItem(mailadress)) {
-        alert('Ett konto med denna mailadress finns redan!');
-        return;
-    }
-
-    Object.keys(localStorage).forEach(key => {
-        let value = localStorage.getItem(key);
-        console.log(key);
-    });
-
-    localStorage.setItem(mailadress, JSON.stringify({ name, mailadress, telefon, lösenord }));
-
-
-    console.log(förnamn, efternamn, mailadress, telefon, lösenord);
-    console.log('Nu har det submittats');
+	if (message === "") {
+		element.classList.add("d-none");
+	} else {
+		element.classList.add(isError ? "bg-danger" : "bg-success");
+	}
 }
 
-function login () {
-    const email = document.querySelector('#username').value;
-    const password = document.querySelector('#password').value;
-    const user = JSON.parse(localStorage.getItem(email));
+function createAccount() {
+	const firstName = document.getElementById("firstName").value;
+	const lastName = document.getElementById("lastName").value;
+	const fullName = firstName + " " + lastName;
+	const email = document.getElementById("email").value;
+	const phoneNumber = document.getElementById("phoneNumber").value;
+	const password = document.getElementById("password").value;
+	const repeatedPassword = document.getElementById("repeatedPassword").value;
+	const errorPrompt = document.querySelector(".errorPromp");
+	updateErrorPrompt(errorPrompt, "");
+	if (password !== repeatedPassword) {
+		updateErrorPrompt(errorPrompt, "Lösenorden matchar inte");
+		return;
+	} else if (password.length < 8) {
+		updateErrorPrompt(errorPrompt, "lösenord måste vara minst 8 tecken!");
+		return;
+	} else if (localStorage.getItem(email)) {
+		updateErrorPrompt(
+			errorPrompt,
+			"Ett konto med denna mailadress finns redan!"
+		);
+		return;
+	}
 
-    if (!localStorage.getItem(email)) {
-        alert('Fel epostadress');
-        return;
-    } else if (user.lösenord !== password) {
-        alert('Fel Lösenord');
-        return;
-    } if (localStorage.getItem(email) && user.lösenord === password) {
-        alert('Du är inloggad');
-    }
+	localStorage.setItem(
+		email,
+		JSON.stringify({ fullName, email, phoneNumber, password })
+	);
+
+	updateErrorPrompt(
+		errorPrompt,
+		"Välkommen " + fullName + " Du har nu skapat ditt konto",
+		false
+	);
 }
 
-function clearSession () {
-    localStorage.clear();
+function login() {
+	const email = document.querySelector("#username").value;
+	const password = document.querySelector("#password").value;
+	const user = JSON.parse(localStorage.getItem(email));
+
+	if (!localStorage.getItem(email)) {
+		alert("Fel epostadress");
+		return;
+	} else if (user.password !== password) {
+		alert("Fel Lösenord");
+		return;
+	}
+	if (localStorage.getItem(email) && user.password === password) {
+		alert("Du är inloggad");
+	}
+}
+
+function clearSession() {
+	localStorage.clear();
 }
 
 // TODO: Funktion för login med från sparad data i localStorage
