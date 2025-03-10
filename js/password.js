@@ -54,6 +54,13 @@ function createAccount() {
 		);
 		return;
 	}
+	if(checkPassword(password) == false){
+		updateErrorPrompt(
+			errorPrompt,
+			"Lösenordet måste innehålla en kombination av stora och små bokstäver, siffror och minst ett specialtecken (-+_!?@&*,.#)"
+		);
+		return;
+	};
 
 	localStorage.setItem(
 		email,
@@ -67,6 +74,16 @@ function createAccount() {
 	);
 }
 
+function checkPassword(password){
+	let requiredSigns = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-+_!?@&*,.#]).");
+	if(requiredSigns.test(password)){
+		return true;
+	}
+	else{
+		return false;
+	}
+
+}
 function login() {
 	const email = document.querySelector("#username").value;
 	const password = document.querySelector("#password").value;
