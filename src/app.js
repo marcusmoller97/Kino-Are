@@ -35,7 +35,7 @@ function initApp(API) {
 		})
 		.get("/test-login", (_req, res) => {
 			renderPage(res, "test-login");
-		});
+		})
 		
 
 	app
