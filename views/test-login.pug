@@ -1,0 +1,22 @@
+doctype html
+html(lang="sv")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    script(type="module", src="/js/password.js", defer)
+    title Logga in
+  body
+    .container
+      h2 Logga in
+
+      form#loginForm
+        .form-row
+          .form-group
+            label(for="username") Mailadress*
+            input(type="text" id="username" name="Username" required)
+          .form-group
+            label(for="password") Password*
+            input(type="password" id="password" name="password" required)
+
+        .form-group
+          button(type="submit") Logga in
