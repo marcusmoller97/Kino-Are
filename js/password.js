@@ -72,6 +72,7 @@ function login() {
 	const password = document.querySelector("#password").value;
 	const user = JSON.parse(localStorage.getItem(email));
 
+
 	if (!localStorage.getItem(email)) {
 		alert("Fel epostadress");
 		return;
