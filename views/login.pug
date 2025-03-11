@@ -44,6 +44,10 @@ block content
       h1 Logga in!
       input.form-control#email(type="email" placeholder="Epostadress")
       input.form-control#password(type="password" placeholder="Lösenord")
+      div#succesLogin.alert.alert-succes.bg-succes(style="background-color: #14C400; display: none")
+        h4.alert-heading  Login succesfull
+      div#unsuccesLogin.alert.alert-danger(style="background-color: #DE8585; display: none")
+        h4.alert-heading(style="color: #701813")  Login unsuccesfull
       button.btn.btn-primary.loggaInBtn(type="submit") Logga in
       a(href="/signUp") Skapa konto
 

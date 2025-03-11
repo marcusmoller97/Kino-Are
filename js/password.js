@@ -20,7 +20,7 @@ if (pathUrl === "/login") {
 	});
 }
 
-function updateErrorPrompt(element, message, isError = true) {
+function updateErrorPrompt (element, message, isError = true) {
 	element.classList.remove("d-none", "bg-danger", "bg-success");
 	element.textContent = message;
 
@@ -31,7 +31,7 @@ function updateErrorPrompt(element, message, isError = true) {
 	}
 }
 
-function createAccount() {
+function createAccount () {
 	const firstName = document.getElementById("firstName").value;
 	const lastName = document.getElementById("lastName").value;
 	const fullName = firstName + " " + lastName;
@@ -54,7 +54,7 @@ function createAccount() {
 		);
 		return;
 	}
-	if(checkPassword(password) == false){
+	if (checkPassword(password) == false) {
 		updateErrorPrompt(
 			errorPrompt,
 			"Lösenordet måste innehålla en kombination av stora och små bokstäver, siffror och minst ett specialtecken (-+_!?@&*,.#)"
@@ -74,17 +74,17 @@ function createAccount() {
 	);
 }
 
-function checkPassword(password){
+function checkPassword (password) {
 	let requiredSigns = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[-+_!?@&*,.#]).");
-	if(requiredSigns.test(password)){
+	if (requiredSigns.test(password)) {
 		return true;
 	}
-	else{
+	else {
 		return false;
 	}
 
 }
-function login() {
+function login () {
 	const email = document.querySelector("#email").value;
 	const password = document.querySelector("#password").value;
 	const user = JSON.parse(localStorage.getItem(email));
@@ -94,15 +94,25 @@ function login() {
 		alert("Fel epostadress");
 		return;
 	} else if (user.password !== password) {
-		alert("Fel Lösenord");
+		/* alert("Fel Lösenord"); */
+		const div = document.querySelector('#unsuccesLogin');
+		div.style.display = "block";
+		setTimeout(() => {
+			div.style.display = "none";
+		}, "5000");
 		return;
 	}
 	if (localStorage.getItem(email) && user.password === password) {
-		alert("Du är inloggad");
+		/* alert("Du är inloggad"); */
+		const div = document.querySelector('#succesLogin');
+		div.style.display = "block";
+		setTimeout(() => {
+			div.style.display = "none";
+		}, "5000");
 	}
 }
 
-function clearSession() {
+function clearSession () {
 	localStorage.clear();
 }
 
