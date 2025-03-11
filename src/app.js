@@ -30,9 +30,13 @@ function initApp(API) {
 		.get("/signUp", async (_req, res) => {
 			renderPage(res, "signUp")
 		})
+		.get("/login", async (_req, res) => {
+			renderPage(res, "login")
+		})
 		.get("/test-login", (_req, res) => {
 			renderPage(res, "test-login");
-		});
+		})
+		
 
 	app
 		.use(express.json())
