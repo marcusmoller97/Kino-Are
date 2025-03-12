@@ -1,9 +1,9 @@
 const pathUrl = window.location.pathname.toLowerCase();
 
-if (pathUrl === "/test-login") {
+if (pathUrl === "/login") {
 	document.addEventListener("DOMContentLoaded", () => {
 		document
-			.getElementById("loginForm")
+			.querySelector(".loginForm")
 			.addEventListener("submit", function (event) {
 				event.preventDefault();
 				login();
@@ -85,7 +85,7 @@ function checkPassword(password){
 
 }
 function login() {
-	const email = document.querySelector("#username").value;
+	const email = document.querySelector("#email").value;
 	const password = document.querySelector("#password").value;
 	const user = JSON.parse(localStorage.getItem(email));
 
