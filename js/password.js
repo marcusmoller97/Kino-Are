@@ -84,7 +84,9 @@ function checkPassword (password) {
 	}
 
 }
-function login () {
+
+function login() {
+
 	const email = document.querySelector("#email").value;
 	const password = document.querySelector("#password").value;
 	const user = JSON.parse(localStorage.getItem(email));
